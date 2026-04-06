@@ -11,19 +11,19 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,N
 -- Schema mydb
 -- -----------------------------------------------------
 -- -----------------------------------------------------
--- Schema dbdotproject_g6
+-- Schema dotprojectplus_2025
 -- -----------------------------------------------------
 
 -- -----------------------------------------------------
--- Schema dbdotproject_g6
+-- Schema dotprojectplus_2025
 -- -----------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS `dbdotproject_g6` DEFAULT CHARACTER SET utf8mb4 ;
-USE `dbdotproject_g6` ;
+CREATE SCHEMA IF NOT EXISTS `dotprojectplus_2025` DEFAULT CHARACTER SET utf8mb4 ;
+USE `dotprojectplus_2025` ;
 
 -- -----------------------------------------------------
--- Table `dbdotproject_g6`.`dotp_projects`
+-- Table `dotprojectplus_2025`.`dotp_projects`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `dbdotproject_g6`.`dotp_projects` (
+CREATE TABLE IF NOT EXISTS `dotprojectplus_2025`.`dotp_projects` (
   `project_id` INT(11) NOT NULL AUTO_INCREMENT,
   `project_company` INT(11) NOT NULL DEFAULT 0,
   `project_company_internal` INT(11) NOT NULL DEFAULT 0,
@@ -59,9 +59,9 @@ DEFAULT CHARACTER SET = utf8mb4;
 
 
 -- -----------------------------------------------------
--- Table `dbdotproject_g6`.`dotp_acquisition_execution`
+-- Table `dotprojectplus_2025`.`dotp_acquisition_execution`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `dbdotproject_g6`.`dotp_acquisition_execution` (
+CREATE TABLE IF NOT EXISTS `dotprojectplus_2025`.`dotp_acquisition_execution` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
   `project_id` INT(11) NULL DEFAULT NULL,
   `is_delivered` INT(11) NULL DEFAULT 0,
@@ -74,16 +74,16 @@ CREATE TABLE IF NOT EXISTS `dbdotproject_g6`.`dotp_acquisition_execution` (
   INDEX `FK_PROJECT_AQC_EXE` (`project_id` ASC) VISIBLE,
   CONSTRAINT `FK_PROJECT_AQC_EXE`
     FOREIGN KEY (`project_id`)
-    REFERENCES `dbdotproject_g6`.`dotp_projects` (`project_id`)
+    REFERENCES `dotprojectplus_2025`.`dotp_projects` (`project_id`)
     ON DELETE CASCADE)
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4;
 
 
 -- -----------------------------------------------------
--- Table `dbdotproject_g6`.`dotp_acquisition_planning`
+-- Table `dotprojectplus_2025`.`dotp_acquisition_planning`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `dbdotproject_g6`.`dotp_acquisition_planning` (
+CREATE TABLE IF NOT EXISTS `dotprojectplus_2025`.`dotp_acquisition_planning` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
   `project_id` INT(11) NULL DEFAULT NULL,
   `items_to_be_acquired` TEXT NULL DEFAULT NULL,
@@ -97,7 +97,7 @@ CREATE TABLE IF NOT EXISTS `dbdotproject_g6`.`dotp_acquisition_planning` (
   INDEX `FK_PROJECT_QUALITY` (`project_id` ASC) VISIBLE,
   CONSTRAINT `FK_PROJECT_QUALITY`
     FOREIGN KEY (`project_id`)
-    REFERENCES `dbdotproject_g6`.`dotp_projects` (`project_id`)
+    REFERENCES `dotprojectplus_2025`.`dotp_projects` (`project_id`)
     ON DELETE CASCADE)
 ENGINE = InnoDB
 AUTO_INCREMENT = 4
@@ -105,9 +105,9 @@ DEFAULT CHARACTER SET = utf8mb4;
 
 
 -- -----------------------------------------------------
--- Table `dbdotproject_g6`.`dotp_acquisition_planning_criteria`
+-- Table `dotprojectplus_2025`.`dotp_acquisition_planning_criteria`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `dbdotproject_g6`.`dotp_acquisition_planning_criteria` (
+CREATE TABLE IF NOT EXISTS `dotprojectplus_2025`.`dotp_acquisition_planning_criteria` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
   `acquisition_id` INT(11) NULL DEFAULT NULL,
   `criteria` TEXT NULL DEFAULT NULL,
@@ -116,7 +116,7 @@ CREATE TABLE IF NOT EXISTS `dbdotproject_g6`.`dotp_acquisition_planning_criteria
   INDEX `FK_ACQUISITION_CRITERIA` (`acquisition_id` ASC) VISIBLE,
   CONSTRAINT `FK_ACQUISITION_CRITERIA`
     FOREIGN KEY (`acquisition_id`)
-    REFERENCES `dbdotproject_g6`.`dotp_acquisition_planning` (`id`)
+    REFERENCES `dotprojectplus_2025`.`dotp_acquisition_planning` (`id`)
     ON DELETE CASCADE)
 ENGINE = InnoDB
 AUTO_INCREMENT = 7
@@ -124,9 +124,9 @@ DEFAULT CHARACTER SET = utf8mb4;
 
 
 -- -----------------------------------------------------
--- Table `dbdotproject_g6`.`dotp_acquisition_planning_requirements`
+-- Table `dotprojectplus_2025`.`dotp_acquisition_planning_requirements`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `dbdotproject_g6`.`dotp_acquisition_planning_requirements` (
+CREATE TABLE IF NOT EXISTS `dotprojectplus_2025`.`dotp_acquisition_planning_requirements` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
   `acquisition_id` INT(11) NULL DEFAULT NULL,
   `requirement` TEXT NULL DEFAULT NULL,
@@ -134,7 +134,7 @@ CREATE TABLE IF NOT EXISTS `dbdotproject_g6`.`dotp_acquisition_planning_requirem
   INDEX `FK_AQUISITION_REQUIREMENT` (`acquisition_id` ASC) VISIBLE,
   CONSTRAINT `FK_AQUISITION_REQUIREMENT`
     FOREIGN KEY (`acquisition_id`)
-    REFERENCES `dbdotproject_g6`.`dotp_acquisition_planning` (`id`)
+    REFERENCES `dotprojectplus_2025`.`dotp_acquisition_planning` (`id`)
     ON DELETE CASCADE)
 ENGINE = InnoDB
 AUTO_INCREMENT = 5
@@ -142,9 +142,9 @@ DEFAULT CHARACTER SET = utf8mb4;
 
 
 -- -----------------------------------------------------
--- Table `dbdotproject_g6`.`dotp_acquisition_planning_roles`
+-- Table `dotprojectplus_2025`.`dotp_acquisition_planning_roles`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `dbdotproject_g6`.`dotp_acquisition_planning_roles` (
+CREATE TABLE IF NOT EXISTS `dotprojectplus_2025`.`dotp_acquisition_planning_roles` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
   `acquisition_id` INT(11) NULL DEFAULT NULL,
   `role` TEXT NULL DEFAULT NULL,
@@ -153,7 +153,7 @@ CREATE TABLE IF NOT EXISTS `dbdotproject_g6`.`dotp_acquisition_planning_roles` (
   INDEX `FK_ACQUISITION_ROLE` (`acquisition_id` ASC) VISIBLE,
   CONSTRAINT `FK_ACQUISITION_ROLE`
     FOREIGN KEY (`acquisition_id`)
-    REFERENCES `dbdotproject_g6`.`dotp_acquisition_planning` (`id`)
+    REFERENCES `dotprojectplus_2025`.`dotp_acquisition_planning` (`id`)
     ON DELETE CASCADE)
 ENGINE = InnoDB
 AUTO_INCREMENT = 7
@@ -161,9 +161,9 @@ DEFAULT CHARACTER SET = utf8mb4;
 
 
 -- -----------------------------------------------------
--- Table `dbdotproject_g6`.`dotp_billingcode`
+-- Table `dotprojectplus_2025`.`dotp_billingcode`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `dbdotproject_g6`.`dotp_billingcode` (
+CREATE TABLE IF NOT EXISTS `dotprojectplus_2025`.`dotp_billingcode` (
   `billingcode_id` BIGINT(20) NOT NULL AUTO_INCREMENT,
   `billingcode_name` VARCHAR(25) NOT NULL DEFAULT '',
   `billingcode_value` FLOAT NOT NULL DEFAULT 0,
@@ -176,9 +176,9 @@ DEFAULT CHARACTER SET = utf8mb4;
 
 
 -- -----------------------------------------------------
--- Table `dbdotproject_g6`.`dotp_budget`
+-- Table `dotprojectplus_2025`.`dotp_budget`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `dbdotproject_g6`.`dotp_budget` (
+CREATE TABLE IF NOT EXISTS `dotprojectplus_2025`.`dotp_budget` (
   `budget_id` INT(11) NOT NULL AUTO_INCREMENT,
   `budget_project_id` INT(11) NOT NULL,
   `budget_reserve_management` DECIMAL(9,2) NOT NULL,
@@ -188,7 +188,7 @@ CREATE TABLE IF NOT EXISTS `dbdotproject_g6`.`dotp_budget` (
   INDEX `fk_budget_project_id` (`budget_project_id` ASC) VISIBLE,
   CONSTRAINT `fk_budget_project_id`
     FOREIGN KEY (`budget_project_id`)
-    REFERENCES `dbdotproject_g6`.`dotp_projects` (`project_id`)
+    REFERENCES `dotprojectplus_2025`.`dotp_projects` (`project_id`)
     ON DELETE CASCADE
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
@@ -197,9 +197,9 @@ DEFAULT CHARACTER SET = utf8mb4;
 
 
 -- -----------------------------------------------------
--- Table `dbdotproject_g6`.`dotp_budget_reserve`
+-- Table `dotprojectplus_2025`.`dotp_budget_reserve`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `dbdotproject_g6`.`dotp_budget_reserve` (
+CREATE TABLE IF NOT EXISTS `dotprojectplus_2025`.`dotp_budget_reserve` (
   `budget_reserve_id` INT(11) NOT NULL AUTO_INCREMENT,
   `budget_reserve_project_id` INT(11) NOT NULL,
   `budget_reserve_risk_id` INT(11) NOT NULL,
@@ -212,7 +212,7 @@ CREATE TABLE IF NOT EXISTS `dbdotproject_g6`.`dotp_budget_reserve` (
   INDEX `fk_budget_reserve_project_id` (`budget_reserve_project_id` ASC) VISIBLE,
   CONSTRAINT `fk_budget_reserve_project_id`
     FOREIGN KEY (`budget_reserve_project_id`)
-    REFERENCES `dbdotproject_g6`.`dotp_projects` (`project_id`)
+    REFERENCES `dotprojectplus_2025`.`dotp_projects` (`project_id`)
     ON DELETE CASCADE
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
@@ -221,9 +221,9 @@ DEFAULT CHARACTER SET = utf8mb4;
 
 
 -- -----------------------------------------------------
--- Table `dbdotproject_g6`.`dotp_common_notes`
+-- Table `dotprojectplus_2025`.`dotp_common_notes`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `dbdotproject_g6`.`dotp_common_notes` (
+CREATE TABLE IF NOT EXISTS `dotprojectplus_2025`.`dotp_common_notes` (
   `note_id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT,
   `note_author` INT(10) UNSIGNED NOT NULL DEFAULT 0,
   `note_module` INT(10) UNSIGNED NOT NULL DEFAULT 0,
@@ -243,9 +243,9 @@ DEFAULT CHARACTER SET = utf8mb4;
 
 
 -- -----------------------------------------------------
--- Table `dbdotproject_g6`.`dotp_communication`
+-- Table `dotprojectplus_2025`.`dotp_communication`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `dbdotproject_g6`.`dotp_communication` (
+CREATE TABLE IF NOT EXISTS `dotprojectplus_2025`.`dotp_communication` (
   `communication_id` INT(11) NOT NULL AUTO_INCREMENT,
   `communication_title` VARCHAR(255) NOT NULL,
   `communication_information` VARCHAR(2000) NOT NULL,
@@ -262,9 +262,9 @@ DEFAULT CHARACTER SET = utf8mb4;
 
 
 -- -----------------------------------------------------
--- Table `dbdotproject_g6`.`dotp_communication_channel`
+-- Table `dotprojectplus_2025`.`dotp_communication_channel`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `dbdotproject_g6`.`dotp_communication_channel` (
+CREATE TABLE IF NOT EXISTS `dotprojectplus_2025`.`dotp_communication_channel` (
   `communication_channel_id` INT(11) NOT NULL AUTO_INCREMENT,
   `communication_channel` VARCHAR(255) NOT NULL,
   PRIMARY KEY (`communication_channel_id`))
@@ -274,9 +274,9 @@ DEFAULT CHARACTER SET = utf8mb4;
 
 
 -- -----------------------------------------------------
--- Table `dbdotproject_g6`.`dotp_communication_frequency`
+-- Table `dotprojectplus_2025`.`dotp_communication_frequency`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `dbdotproject_g6`.`dotp_communication_frequency` (
+CREATE TABLE IF NOT EXISTS `dotprojectplus_2025`.`dotp_communication_frequency` (
   `communication_frequency_id` INT(11) NOT NULL AUTO_INCREMENT,
   `communication_frequency` VARCHAR(255) NOT NULL,
   `communication_frequency_hasdate` CHAR(3) NULL DEFAULT 'Nao',
@@ -287,9 +287,9 @@ DEFAULT CHARACTER SET = utf8mb4;
 
 
 -- -----------------------------------------------------
--- Table `dbdotproject_g6`.`dotp_contacts`
+-- Table `dotprojectplus_2025`.`dotp_contacts`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `dbdotproject_g6`.`dotp_contacts` (
+CREATE TABLE IF NOT EXISTS `dotprojectplus_2025`.`dotp_contacts` (
   `contact_id` INT(11) NOT NULL AUTO_INCREMENT,
   `contact_first_name` VARCHAR(30) NULL DEFAULT NULL,
   `contact_last_name` VARCHAR(30) NULL DEFAULT NULL,
@@ -333,9 +333,9 @@ DEFAULT CHARACTER SET = utf8mb4;
 
 
 -- -----------------------------------------------------
--- Table `dbdotproject_g6`.`dotp_communication_issuing`
+-- Table `dotprojectplus_2025`.`dotp_communication_issuing`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `dbdotproject_g6`.`dotp_communication_issuing` (
+CREATE TABLE IF NOT EXISTS `dotprojectplus_2025`.`dotp_communication_issuing` (
   `communication_issuing_id` INT(11) NOT NULL AUTO_INCREMENT,
   `communication_id` INT(11) NOT NULL,
   `communication_stakeholder_id` INT(11) NOT NULL,
@@ -343,7 +343,7 @@ CREATE TABLE IF NOT EXISTS `dbdotproject_g6`.`dotp_communication_issuing` (
   INDEX `fk_communication_issuing` (`communication_stakeholder_id` ASC) VISIBLE,
   CONSTRAINT `fk_communication_issuing`
     FOREIGN KEY (`communication_stakeholder_id`)
-    REFERENCES `dbdotproject_g6`.`dotp_contacts` (`contact_id`)
+    REFERENCES `dotprojectplus_2025`.`dotp_contacts` (`contact_id`)
     ON DELETE CASCADE
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
@@ -352,9 +352,9 @@ DEFAULT CHARACTER SET = utf8mb4;
 
 
 -- -----------------------------------------------------
--- Table `dbdotproject_g6`.`dotp_communication_receptor`
+-- Table `dotprojectplus_2025`.`dotp_communication_receptor`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `dbdotproject_g6`.`dotp_communication_receptor` (
+CREATE TABLE IF NOT EXISTS `dotprojectplus_2025`.`dotp_communication_receptor` (
   `communication_receptor_id` INT(11) NOT NULL AUTO_INCREMENT,
   `communication_id` INT(11) NOT NULL,
   `communication_stakeholder_id` INT(11) NOT NULL,
@@ -362,7 +362,7 @@ CREATE TABLE IF NOT EXISTS `dbdotproject_g6`.`dotp_communication_receptor` (
   INDEX `fk_communication_receptor` (`communication_stakeholder_id` ASC) VISIBLE,
   CONSTRAINT `fk_communication_receptor`
     FOREIGN KEY (`communication_stakeholder_id`)
-    REFERENCES `dbdotproject_g6`.`dotp_contacts` (`contact_id`)
+    REFERENCES `dotprojectplus_2025`.`dotp_contacts` (`contact_id`)
     ON DELETE CASCADE
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
@@ -371,9 +371,9 @@ DEFAULT CHARACTER SET = utf8mb4;
 
 
 -- -----------------------------------------------------
--- Table `dbdotproject_g6`.`dotp_companies`
+-- Table `dotprojectplus_2025`.`dotp_companies`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `dbdotproject_g6`.`dotp_companies` (
+CREATE TABLE IF NOT EXISTS `dotprojectplus_2025`.`dotp_companies` (
   `company_id` INT(10) NOT NULL AUTO_INCREMENT,
   `company_module` INT(10) NOT NULL DEFAULT 0,
   `company_name` VARCHAR(100) NULL DEFAULT '',
@@ -399,9 +399,9 @@ DEFAULT CHARACTER SET = utf8mb4;
 
 
 -- -----------------------------------------------------
--- Table `dbdotproject_g6`.`dotp_company_policies`
+-- Table `dotprojectplus_2025`.`dotp_company_policies`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `dbdotproject_g6`.`dotp_company_policies` (
+CREATE TABLE IF NOT EXISTS `dotprojectplus_2025`.`dotp_company_policies` (
   `company_policies_id` INT(11) NOT NULL AUTO_INCREMENT,
   `company_policies_recognition` TEXT NULL DEFAULT NULL,
   `company_policies_policy` TEXT NULL DEFAULT NULL,
@@ -411,7 +411,7 @@ CREATE TABLE IF NOT EXISTS `dbdotproject_g6`.`dotp_company_policies` (
   INDEX `company_policies_company_id` (`company_policies_company_id` ASC) VISIBLE,
   CONSTRAINT `dotp_company_policies_ibfk_1`
     FOREIGN KEY (`company_policies_company_id`)
-    REFERENCES `dbdotproject_g6`.`dotp_companies` (`company_id`)
+    REFERENCES `dotprojectplus_2025`.`dotp_companies` (`company_id`)
     ON DELETE CASCADE)
 ENGINE = InnoDB
 AUTO_INCREMENT = 3
@@ -419,9 +419,9 @@ DEFAULT CHARACTER SET = utf8mb4;
 
 
 -- -----------------------------------------------------
--- Table `dbdotproject_g6`.`dotp_company_role`
+-- Table `dotprojectplus_2025`.`dotp_company_role`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `dbdotproject_g6`.`dotp_company_role` (
+CREATE TABLE IF NOT EXISTS `dotprojectplus_2025`.`dotp_company_role` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
   `company_id` INT(11) NULL DEFAULT NULL,
   `sort_order` INT(11) NULL DEFAULT NULL,
@@ -431,7 +431,7 @@ CREATE TABLE IF NOT EXISTS `dbdotproject_g6`.`dotp_company_role` (
   INDEX `fk_role_company` (`company_id` ASC) VISIBLE,
   CONSTRAINT `fk_role_company`
     FOREIGN KEY (`company_id`)
-    REFERENCES `dbdotproject_g6`.`dotp_companies` (`company_id`)
+    REFERENCES `dotprojectplus_2025`.`dotp_companies` (`company_id`)
     ON DELETE CASCADE)
 ENGINE = InnoDB
 AUTO_INCREMENT = 12
@@ -439,9 +439,9 @@ DEFAULT CHARACTER SET = utf8mb4;
 
 
 -- -----------------------------------------------------
--- Table `dbdotproject_g6`.`dotp_config`
+-- Table `dotprojectplus_2025`.`dotp_config`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `dbdotproject_g6`.`dotp_config` (
+CREATE TABLE IF NOT EXISTS `dotprojectplus_2025`.`dotp_config` (
   `config_id` INT(11) NOT NULL AUTO_INCREMENT,
   `config_name` VARCHAR(255) NOT NULL DEFAULT '',
   `config_value` VARCHAR(255) NOT NULL DEFAULT '',
@@ -455,9 +455,9 @@ DEFAULT CHARACTER SET = utf8mb4;
 
 
 -- -----------------------------------------------------
--- Table `dbdotproject_g6`.`dotp_config_list`
+-- Table `dotprojectplus_2025`.`dotp_config_list`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `dbdotproject_g6`.`dotp_config_list` (
+CREATE TABLE IF NOT EXISTS `dotprojectplus_2025`.`dotp_config_list` (
   `config_list_id` INT(11) NOT NULL AUTO_INCREMENT,
   `config_id` INT(11) NOT NULL DEFAULT 0,
   `config_list_name` VARCHAR(30) NOT NULL DEFAULT '',
@@ -469,9 +469,9 @@ DEFAULT CHARACTER SET = utf8mb4;
 
 
 -- -----------------------------------------------------
--- Table `dbdotproject_g6`.`dotp_users`
+-- Table `dotprojectplus_2025`.`dotp_users`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `dbdotproject_g6`.`dotp_users` (
+CREATE TABLE IF NOT EXISTS `dotprojectplus_2025`.`dotp_users` (
   `user_id` INT(11) NOT NULL AUTO_INCREMENT,
   `user_contact` INT(11) NOT NULL DEFAULT 0,
   `user_username` VARCHAR(255) NOT NULL DEFAULT '',
@@ -492,9 +492,9 @@ DEFAULT CHARACTER SET = utf8mb4;
 
 
 -- -----------------------------------------------------
--- Table `dbdotproject_g6`.`dotp_human_resource`
+-- Table `dotprojectplus_2025`.`dotp_human_resource`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `dbdotproject_g6`.`dotp_human_resource` (
+CREATE TABLE IF NOT EXISTS `dotprojectplus_2025`.`dotp_human_resource` (
   `human_resource_id` INT(11) NOT NULL AUTO_INCREMENT,
   `human_resource_user_id` INT(11) NOT NULL,
   `human_resource_lattes_url` TEXT NULL DEFAULT NULL,
@@ -509,7 +509,7 @@ CREATE TABLE IF NOT EXISTS `dbdotproject_g6`.`dotp_human_resource` (
   INDEX `human_resource_user_id` (`human_resource_user_id` ASC) VISIBLE,
   CONSTRAINT `dotp_human_resource_ibfk_1`
     FOREIGN KEY (`human_resource_user_id`)
-    REFERENCES `dbdotproject_g6`.`dotp_users` (`user_id`)
+    REFERENCES `dotprojectplus_2025`.`dotp_users` (`user_id`)
     ON DELETE CASCADE)
 ENGINE = InnoDB
 AUTO_INCREMENT = 13
@@ -517,9 +517,9 @@ DEFAULT CHARACTER SET = utf8mb4;
 
 
 -- -----------------------------------------------------
--- Table `dbdotproject_g6`.`dotp_human_resources_role`
+-- Table `dotprojectplus_2025`.`dotp_human_resources_role`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `dbdotproject_g6`.`dotp_human_resources_role` (
+CREATE TABLE IF NOT EXISTS `dotprojectplus_2025`.`dotp_human_resources_role` (
   `human_resources_role_id` INT(11) NOT NULL AUTO_INCREMENT,
   `human_resources_role_name` TEXT NOT NULL,
   `human_resources_role_authority` TEXT NULL DEFAULT NULL,
@@ -530,7 +530,7 @@ CREATE TABLE IF NOT EXISTS `dbdotproject_g6`.`dotp_human_resources_role` (
   INDEX `human_resources_role_company_id` (`human_resources_role_company_id` ASC) VISIBLE,
   CONSTRAINT `dotp_human_resources_role_ibfk_1`
     FOREIGN KEY (`human_resources_role_company_id`)
-    REFERENCES `dbdotproject_g6`.`dotp_companies` (`company_id`)
+    REFERENCES `dotprojectplus_2025`.`dotp_companies` (`company_id`)
     ON DELETE CASCADE)
 ENGINE = InnoDB
 AUTO_INCREMENT = 12
@@ -538,9 +538,9 @@ DEFAULT CHARACTER SET = utf8mb4;
 
 
 -- -----------------------------------------------------
--- Table `dbdotproject_g6`.`dotp_costs`
+-- Table `dotprojectplus_2025`.`dotp_costs`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `dbdotproject_g6`.`dotp_costs` (
+CREATE TABLE IF NOT EXISTS `dotprojectplus_2025`.`dotp_costs` (
   `cost_id` INT(11) NOT NULL AUTO_INCREMENT,
   `cost_type_id` INT(11) NOT NULL,
   `cost_project_id` INT(11) NOT NULL,
@@ -558,17 +558,17 @@ CREATE TABLE IF NOT EXISTS `dbdotproject_g6`.`dotp_costs` (
   INDEX `fk_cost_human_resource_id` (`cost_human_resource_id` ASC) VISIBLE,
   CONSTRAINT `fk_cost_human_resource_id`
     FOREIGN KEY (`cost_human_resource_id`)
-    REFERENCES `dbdotproject_g6`.`dotp_human_resource` (`human_resource_id`)
+    REFERENCES `dotprojectplus_2025`.`dotp_human_resource` (`human_resource_id`)
     ON DELETE CASCADE
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_cost_human_resource_role_id`
     FOREIGN KEY (`cost_human_resource_role_id`)
-    REFERENCES `dbdotproject_g6`.`dotp_human_resources_role` (`human_resources_role_id`)
+    REFERENCES `dotprojectplus_2025`.`dotp_human_resources_role` (`human_resources_role_id`)
     ON DELETE CASCADE
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_cost_project_id`
     FOREIGN KEY (`cost_project_id`)
-    REFERENCES `dbdotproject_g6`.`dotp_projects` (`project_id`)
+    REFERENCES `dotprojectplus_2025`.`dotp_projects` (`project_id`)
     ON DELETE CASCADE
     ON UPDATE CASCADE)
 ENGINE = InnoDB
@@ -577,9 +577,9 @@ DEFAULT CHARACTER SET = utf8mb4;
 
 
 -- -----------------------------------------------------
--- Table `dbdotproject_g6`.`dotp_custom_fields_lists`
+-- Table `dotprojectplus_2025`.`dotp_custom_fields_lists`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `dbdotproject_g6`.`dotp_custom_fields_lists` (
+CREATE TABLE IF NOT EXISTS `dotprojectplus_2025`.`dotp_custom_fields_lists` (
   `field_id` INT(11) NULL DEFAULT NULL,
   `list_option_id` INT(11) NULL DEFAULT NULL,
   `list_value` VARCHAR(250) NULL DEFAULT NULL)
@@ -588,9 +588,9 @@ DEFAULT CHARACTER SET = latin1;
 
 
 -- -----------------------------------------------------
--- Table `dbdotproject_g6`.`dotp_custom_fields_struct`
+-- Table `dotprojectplus_2025`.`dotp_custom_fields_struct`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `dbdotproject_g6`.`dotp_custom_fields_struct` (
+CREATE TABLE IF NOT EXISTS `dotprojectplus_2025`.`dotp_custom_fields_struct` (
   `field_id` INT(11) NOT NULL,
   `field_module` VARCHAR(30) NULL DEFAULT NULL,
   `field_page` VARCHAR(30) NULL DEFAULT NULL,
@@ -606,9 +606,9 @@ DEFAULT CHARACTER SET = latin1;
 
 
 -- -----------------------------------------------------
--- Table `dbdotproject_g6`.`dotp_custom_fields_values`
+-- Table `dotprojectplus_2025`.`dotp_custom_fields_values`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `dbdotproject_g6`.`dotp_custom_fields_values` (
+CREATE TABLE IF NOT EXISTS `dotprojectplus_2025`.`dotp_custom_fields_values` (
   `value_id` INT(11) NULL DEFAULT NULL,
   `value_module` VARCHAR(30) NULL DEFAULT NULL,
   `value_object_id` INT(11) NULL DEFAULT NULL,
@@ -621,9 +621,9 @@ DEFAULT CHARACTER SET = latin1;
 
 
 -- -----------------------------------------------------
--- Table `dbdotproject_g6`.`dotp_departments`
+-- Table `dotprojectplus_2025`.`dotp_departments`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `dbdotproject_g6`.`dotp_departments` (
+CREATE TABLE IF NOT EXISTS `dotprojectplus_2025`.`dotp_departments` (
   `dept_id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT,
   `dept_parent` INT(10) UNSIGNED NOT NULL DEFAULT 0,
   `dept_company` INT(10) UNSIGNED NOT NULL DEFAULT 0,
@@ -645,9 +645,9 @@ COMMENT = 'Department heirarchy under a company';
 
 
 -- -----------------------------------------------------
--- Table `dbdotproject_g6`.`dotp_dotpermissions`
+-- Table `dotprojectplus_2025`.`dotp_dotpermissions`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `dbdotproject_g6`.`dotp_dotpermissions` (
+CREATE TABLE IF NOT EXISTS `dotprojectplus_2025`.`dotp_dotpermissions` (
   `acl_id` INT(11) NOT NULL DEFAULT 0,
   `user_id` VARCHAR(80) NOT NULL DEFAULT '',
   `section` VARCHAR(80) NOT NULL DEFAULT '',
@@ -662,9 +662,9 @@ DEFAULT CHARACTER SET = latin1;
 
 
 -- -----------------------------------------------------
--- Table `dbdotproject_g6`.`dotp_dpversion`
+-- Table `dotprojectplus_2025`.`dotp_dpversion`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `dbdotproject_g6`.`dotp_dpversion` (
+CREATE TABLE IF NOT EXISTS `dotprojectplus_2025`.`dotp_dpversion` (
   `code_version` VARCHAR(10) NOT NULL DEFAULT '',
   `db_version` INT(11) NOT NULL DEFAULT 0,
   `last_db_update` DATE NOT NULL DEFAULT '0000-00-00',
@@ -674,9 +674,9 @@ DEFAULT CHARACTER SET = latin1;
 
 
 -- -----------------------------------------------------
--- Table `dbdotproject_g6`.`dotp_project_eap_items`
+-- Table `dotprojectplus_2025`.`dotp_project_eap_items`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `dbdotproject_g6`.`dotp_project_eap_items` (
+CREATE TABLE IF NOT EXISTS `dotprojectplus_2025`.`dotp_project_eap_items` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
   `project_id` INT(11) NULL DEFAULT NULL,
   `sort_order` INT(11) NULL DEFAULT NULL,
@@ -688,7 +688,7 @@ CREATE TABLE IF NOT EXISTS `dbdotproject_g6`.`dotp_project_eap_items` (
   INDEX `fk_eap_item_project` (`project_id` ASC) VISIBLE,
   CONSTRAINT `fk_eap_item_project`
     FOREIGN KEY (`project_id`)
-    REFERENCES `dbdotproject_g6`.`dotp_projects` (`project_id`)
+    REFERENCES `dotprojectplus_2025`.`dotp_projects` (`project_id`)
     ON DELETE CASCADE)
 ENGINE = InnoDB
 AUTO_INCREMENT = 183
@@ -696,9 +696,9 @@ DEFAULT CHARACTER SET = utf8mb4;
 
 
 -- -----------------------------------------------------
--- Table `dbdotproject_g6`.`dotp_eap_item_estimations`
+-- Table `dotprojectplus_2025`.`dotp_eap_item_estimations`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `dbdotproject_g6`.`dotp_eap_item_estimations` (
+CREATE TABLE IF NOT EXISTS `dotprojectplus_2025`.`dotp_eap_item_estimations` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
   `eap_item_id` INT(11) NULL DEFAULT NULL,
   `size` FLOAT NULL DEFAULT NULL,
@@ -707,7 +707,7 @@ CREATE TABLE IF NOT EXISTS `dbdotproject_g6`.`dotp_eap_item_estimations` (
   INDEX `fk_estimation_eap_item` (`eap_item_id` ASC) VISIBLE,
   CONSTRAINT `fk_estimation_eap_item`
     FOREIGN KEY (`eap_item_id`)
-    REFERENCES `dbdotproject_g6`.`dotp_project_eap_items` (`id`)
+    REFERENCES `dotprojectplus_2025`.`dotp_project_eap_items` (`id`)
     ON DELETE CASCADE)
 ENGINE = InnoDB
 AUTO_INCREMENT = 155
@@ -715,9 +715,9 @@ DEFAULT CHARACTER SET = utf8mb4;
 
 
 -- -----------------------------------------------------
--- Table `dbdotproject_g6`.`dotp_event_queue`
+-- Table `dotprojectplus_2025`.`dotp_event_queue`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `dbdotproject_g6`.`dotp_event_queue` (
+CREATE TABLE IF NOT EXISTS `dotprojectplus_2025`.`dotp_event_queue` (
   `queue_id` INT(11) NOT NULL AUTO_INCREMENT,
   `queue_start` INT(11) NOT NULL DEFAULT 0,
   `queue_type` VARCHAR(40) NOT NULL DEFAULT '',
@@ -739,9 +739,9 @@ DEFAULT CHARACTER SET = utf8mb4;
 
 
 -- -----------------------------------------------------
--- Table `dbdotproject_g6`.`dotp_events`
+-- Table `dotprojectplus_2025`.`dotp_events`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `dbdotproject_g6`.`dotp_events` (
+CREATE TABLE IF NOT EXISTS `dotprojectplus_2025`.`dotp_events` (
   `event_id` INT(11) NOT NULL AUTO_INCREMENT,
   `event_title` VARCHAR(255) NOT NULL DEFAULT '',
   `event_start_date` DATETIME NULL DEFAULT NULL,
@@ -769,9 +769,9 @@ DEFAULT CHARACTER SET = utf8mb4;
 
 
 -- -----------------------------------------------------
--- Table `dbdotproject_g6`.`dotp_file_folders`
+-- Table `dotprojectplus_2025`.`dotp_file_folders`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `dbdotproject_g6`.`dotp_file_folders` (
+CREATE TABLE IF NOT EXISTS `dotprojectplus_2025`.`dotp_file_folders` (
   `file_folder_id` INT(11) NOT NULL AUTO_INCREMENT,
   `file_folder_parent` INT(11) NOT NULL DEFAULT 0,
   `file_folder_name` VARCHAR(255) NOT NULL DEFAULT '',
@@ -782,9 +782,9 @@ DEFAULT CHARACTER SET = utf8mb4;
 
 
 -- -----------------------------------------------------
--- Table `dbdotproject_g6`.`dotp_files`
+-- Table `dotprojectplus_2025`.`dotp_files`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `dbdotproject_g6`.`dotp_files` (
+CREATE TABLE IF NOT EXISTS `dotprojectplus_2025`.`dotp_files` (
   `file_id` INT(11) NOT NULL AUTO_INCREMENT,
   `file_real_filename` VARCHAR(255) NOT NULL DEFAULT '',
   `file_folder` INT(11) NOT NULL DEFAULT 0,
@@ -813,9 +813,9 @@ DEFAULT CHARACTER SET = utf8mb4;
 
 
 -- -----------------------------------------------------
--- Table `dbdotproject_g6`.`dotp_files_index`
+-- Table `dotprojectplus_2025`.`dotp_files_index`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `dbdotproject_g6`.`dotp_files_index` (
+CREATE TABLE IF NOT EXISTS `dotprojectplus_2025`.`dotp_files_index` (
   `file_id` INT(11) NOT NULL DEFAULT 0,
   `word` VARCHAR(50) NOT NULL DEFAULT '',
   `word_placement` INT(11) NOT NULL DEFAULT 0,
@@ -826,9 +826,9 @@ DEFAULT CHARACTER SET = latin1;
 
 
 -- -----------------------------------------------------
--- Table `dbdotproject_g6`.`dotp_forum_messages`
+-- Table `dotprojectplus_2025`.`dotp_forum_messages`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `dbdotproject_g6`.`dotp_forum_messages` (
+CREATE TABLE IF NOT EXISTS `dotprojectplus_2025`.`dotp_forum_messages` (
   `message_id` INT(11) NOT NULL AUTO_INCREMENT,
   `message_forum` INT(11) NOT NULL DEFAULT 0,
   `message_parent` INT(11) NOT NULL DEFAULT 0,
@@ -847,9 +847,9 @@ DEFAULT CHARACTER SET = utf8mb4;
 
 
 -- -----------------------------------------------------
--- Table `dbdotproject_g6`.`dotp_forum_visits`
+-- Table `dotprojectplus_2025`.`dotp_forum_visits`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `dbdotproject_g6`.`dotp_forum_visits` (
+CREATE TABLE IF NOT EXISTS `dotprojectplus_2025`.`dotp_forum_visits` (
   `visit_user` INT(10) NOT NULL DEFAULT 0,
   `visit_forum` INT(10) NOT NULL DEFAULT 0,
   `visit_message` INT(10) NOT NULL DEFAULT 0,
@@ -860,9 +860,9 @@ DEFAULT CHARACTER SET = latin1;
 
 
 -- -----------------------------------------------------
--- Table `dbdotproject_g6`.`dotp_forum_watch`
+-- Table `dotprojectplus_2025`.`dotp_forum_watch`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `dbdotproject_g6`.`dotp_forum_watch` (
+CREATE TABLE IF NOT EXISTS `dotprojectplus_2025`.`dotp_forum_watch` (
   `watch_user` INT(10) UNSIGNED NOT NULL DEFAULT 0,
   `watch_forum` INT(10) UNSIGNED NULL DEFAULT NULL,
   `watch_topic` INT(10) UNSIGNED NULL DEFAULT NULL,
@@ -874,9 +874,9 @@ COMMENT = 'Links users to the forums/messages they are watching';
 
 
 -- -----------------------------------------------------
--- Table `dbdotproject_g6`.`dotp_forums`
+-- Table `dotprojectplus_2025`.`dotp_forums`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `dbdotproject_g6`.`dotp_forums` (
+CREATE TABLE IF NOT EXISTS `dotprojectplus_2025`.`dotp_forums` (
   `forum_id` INT(11) NOT NULL AUTO_INCREMENT,
   `forum_project` INT(11) NOT NULL DEFAULT 0,
   `forum_status` TINYINT(4) NOT NULL DEFAULT -1,
@@ -897,9 +897,9 @@ DEFAULT CHARACTER SET = utf8mb4;
 
 
 -- -----------------------------------------------------
--- Table `dbdotproject_g6`.`dotp_gacl_acl`
+-- Table `dotprojectplus_2025`.`dotp_gacl_acl`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `dbdotproject_g6`.`dotp_gacl_acl` (
+CREATE TABLE IF NOT EXISTS `dotprojectplus_2025`.`dotp_gacl_acl` (
   `id` INT(11) NOT NULL DEFAULT 0,
   `section_value` VARCHAR(80) NOT NULL DEFAULT 'system',
   `allow` INT(11) NOT NULL DEFAULT 0,
@@ -916,9 +916,9 @@ DEFAULT CHARACTER SET = latin1;
 
 
 -- -----------------------------------------------------
--- Table `dbdotproject_g6`.`dotp_gacl_acl_sections`
+-- Table `dotprojectplus_2025`.`dotp_gacl_acl_sections`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `dbdotproject_g6`.`dotp_gacl_acl_sections` (
+CREATE TABLE IF NOT EXISTS `dotprojectplus_2025`.`dotp_gacl_acl_sections` (
   `id` INT(11) NOT NULL DEFAULT 0,
   `value` VARCHAR(80) NOT NULL DEFAULT '',
   `order_value` INT(11) NOT NULL DEFAULT 0,
@@ -932,18 +932,18 @@ DEFAULT CHARACTER SET = latin1;
 
 
 -- -----------------------------------------------------
--- Table `dbdotproject_g6`.`dotp_gacl_acl_seq`
+-- Table `dotprojectplus_2025`.`dotp_gacl_acl_seq`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `dbdotproject_g6`.`dotp_gacl_acl_seq` (
+CREATE TABLE IF NOT EXISTS `dotprojectplus_2025`.`dotp_gacl_acl_seq` (
   `id` INT(11) NOT NULL)
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = latin1;
 
 
 -- -----------------------------------------------------
--- Table `dbdotproject_g6`.`dotp_gacl_aco`
+-- Table `dotprojectplus_2025`.`dotp_gacl_aco`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `dbdotproject_g6`.`dotp_gacl_aco` (
+CREATE TABLE IF NOT EXISTS `dotprojectplus_2025`.`dotp_gacl_aco` (
   `id` INT(11) NOT NULL DEFAULT 0,
   `section_value` VARCHAR(80) NOT NULL DEFAULT '0',
   `value` VARCHAR(80) NOT NULL DEFAULT '',
@@ -958,9 +958,9 @@ DEFAULT CHARACTER SET = latin1;
 
 
 -- -----------------------------------------------------
--- Table `dbdotproject_g6`.`dotp_gacl_aco_map`
+-- Table `dotprojectplus_2025`.`dotp_gacl_aco_map`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `dbdotproject_g6`.`dotp_gacl_aco_map` (
+CREATE TABLE IF NOT EXISTS `dotprojectplus_2025`.`dotp_gacl_aco_map` (
   `acl_id` INT(11) NOT NULL DEFAULT 0,
   `section_value` VARCHAR(80) NOT NULL DEFAULT '0',
   `value` VARCHAR(80) NOT NULL DEFAULT '',
@@ -970,9 +970,9 @@ DEFAULT CHARACTER SET = latin1;
 
 
 -- -----------------------------------------------------
--- Table `dbdotproject_g6`.`dotp_gacl_aco_sections`
+-- Table `dotprojectplus_2025`.`dotp_gacl_aco_sections`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `dbdotproject_g6`.`dotp_gacl_aco_sections` (
+CREATE TABLE IF NOT EXISTS `dotprojectplus_2025`.`dotp_gacl_aco_sections` (
   `id` INT(11) NOT NULL DEFAULT 0,
   `value` VARCHAR(80) NOT NULL DEFAULT '',
   `order_value` INT(11) NOT NULL DEFAULT 0,
@@ -986,27 +986,27 @@ DEFAULT CHARACTER SET = latin1;
 
 
 -- -----------------------------------------------------
--- Table `dbdotproject_g6`.`dotp_gacl_aco_sections_seq`
+-- Table `dotprojectplus_2025`.`dotp_gacl_aco_sections_seq`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `dbdotproject_g6`.`dotp_gacl_aco_sections_seq` (
+CREATE TABLE IF NOT EXISTS `dotprojectplus_2025`.`dotp_gacl_aco_sections_seq` (
   `id` INT(11) NOT NULL)
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = latin1;
 
 
 -- -----------------------------------------------------
--- Table `dbdotproject_g6`.`dotp_gacl_aco_seq`
+-- Table `dotprojectplus_2025`.`dotp_gacl_aco_seq`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `dbdotproject_g6`.`dotp_gacl_aco_seq` (
+CREATE TABLE IF NOT EXISTS `dotprojectplus_2025`.`dotp_gacl_aco_seq` (
   `id` INT(11) NOT NULL)
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = latin1;
 
 
 -- -----------------------------------------------------
--- Table `dbdotproject_g6`.`dotp_gacl_aro`
+-- Table `dotprojectplus_2025`.`dotp_gacl_aro`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `dbdotproject_g6`.`dotp_gacl_aro` (
+CREATE TABLE IF NOT EXISTS `dotprojectplus_2025`.`dotp_gacl_aro` (
   `id` INT(11) NOT NULL DEFAULT 0,
   `section_value` VARCHAR(80) NOT NULL DEFAULT '0',
   `value` VARCHAR(80) NOT NULL DEFAULT '',
@@ -1021,9 +1021,9 @@ DEFAULT CHARACTER SET = latin1;
 
 
 -- -----------------------------------------------------
--- Table `dbdotproject_g6`.`dotp_gacl_aro_groups`
+-- Table `dotprojectplus_2025`.`dotp_gacl_aro_groups`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `dbdotproject_g6`.`dotp_gacl_aro_groups` (
+CREATE TABLE IF NOT EXISTS `dotprojectplus_2025`.`dotp_gacl_aro_groups` (
   `id` INT(11) NOT NULL DEFAULT 0,
   `parent_id` INT(11) NOT NULL DEFAULT 0,
   `lft` INT(11) NOT NULL DEFAULT 0,
@@ -1039,18 +1039,18 @@ DEFAULT CHARACTER SET = latin1;
 
 
 -- -----------------------------------------------------
--- Table `dbdotproject_g6`.`dotp_gacl_aro_groups_id_seq`
+-- Table `dotprojectplus_2025`.`dotp_gacl_aro_groups_id_seq`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `dbdotproject_g6`.`dotp_gacl_aro_groups_id_seq` (
+CREATE TABLE IF NOT EXISTS `dotprojectplus_2025`.`dotp_gacl_aro_groups_id_seq` (
   `id` INT(11) NOT NULL)
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = latin1;
 
 
 -- -----------------------------------------------------
--- Table `dbdotproject_g6`.`dotp_gacl_aro_groups_map`
+-- Table `dotprojectplus_2025`.`dotp_gacl_aro_groups_map`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `dbdotproject_g6`.`dotp_gacl_aro_groups_map` (
+CREATE TABLE IF NOT EXISTS `dotprojectplus_2025`.`dotp_gacl_aro_groups_map` (
   `acl_id` INT(11) NOT NULL DEFAULT 0,
   `group_id` INT(11) NOT NULL DEFAULT 0,
   PRIMARY KEY (`acl_id`, `group_id`))
@@ -1059,9 +1059,9 @@ DEFAULT CHARACTER SET = latin1;
 
 
 -- -----------------------------------------------------
--- Table `dbdotproject_g6`.`dotp_gacl_aro_map`
+-- Table `dotprojectplus_2025`.`dotp_gacl_aro_map`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `dbdotproject_g6`.`dotp_gacl_aro_map` (
+CREATE TABLE IF NOT EXISTS `dotprojectplus_2025`.`dotp_gacl_aro_map` (
   `acl_id` INT(11) NOT NULL DEFAULT 0,
   `section_value` VARCHAR(80) NOT NULL DEFAULT '0',
   `value` VARCHAR(80) NOT NULL DEFAULT '',
@@ -1071,9 +1071,9 @@ DEFAULT CHARACTER SET = latin1;
 
 
 -- -----------------------------------------------------
--- Table `dbdotproject_g6`.`dotp_gacl_aro_sections`
+-- Table `dotprojectplus_2025`.`dotp_gacl_aro_sections`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `dbdotproject_g6`.`dotp_gacl_aro_sections` (
+CREATE TABLE IF NOT EXISTS `dotprojectplus_2025`.`dotp_gacl_aro_sections` (
   `id` INT(11) NOT NULL DEFAULT 0,
   `value` VARCHAR(80) NOT NULL DEFAULT '',
   `order_value` INT(11) NOT NULL DEFAULT 0,
@@ -1087,27 +1087,27 @@ DEFAULT CHARACTER SET = latin1;
 
 
 -- -----------------------------------------------------
--- Table `dbdotproject_g6`.`dotp_gacl_aro_sections_seq`
+-- Table `dotprojectplus_2025`.`dotp_gacl_aro_sections_seq`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `dbdotproject_g6`.`dotp_gacl_aro_sections_seq` (
+CREATE TABLE IF NOT EXISTS `dotprojectplus_2025`.`dotp_gacl_aro_sections_seq` (
   `id` INT(11) NOT NULL)
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = latin1;
 
 
 -- -----------------------------------------------------
--- Table `dbdotproject_g6`.`dotp_gacl_aro_seq`
+-- Table `dotprojectplus_2025`.`dotp_gacl_aro_seq`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `dbdotproject_g6`.`dotp_gacl_aro_seq` (
+CREATE TABLE IF NOT EXISTS `dotprojectplus_2025`.`dotp_gacl_aro_seq` (
   `id` INT(11) NOT NULL)
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = latin1;
 
 
 -- -----------------------------------------------------
--- Table `dbdotproject_g6`.`dotp_gacl_axo`
+-- Table `dotprojectplus_2025`.`dotp_gacl_axo`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `dbdotproject_g6`.`dotp_gacl_axo` (
+CREATE TABLE IF NOT EXISTS `dotprojectplus_2025`.`dotp_gacl_axo` (
   `id` INT(11) NOT NULL DEFAULT 0,
   `section_value` VARCHAR(80) NOT NULL DEFAULT '0',
   `value` VARCHAR(80) NOT NULL DEFAULT '',
@@ -1122,9 +1122,9 @@ DEFAULT CHARACTER SET = latin1;
 
 
 -- -----------------------------------------------------
--- Table `dbdotproject_g6`.`dotp_gacl_axo_groups`
+-- Table `dotprojectplus_2025`.`dotp_gacl_axo_groups`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `dbdotproject_g6`.`dotp_gacl_axo_groups` (
+CREATE TABLE IF NOT EXISTS `dotprojectplus_2025`.`dotp_gacl_axo_groups` (
   `id` INT(11) NOT NULL DEFAULT 0,
   `parent_id` INT(11) NOT NULL DEFAULT 0,
   `lft` INT(11) NOT NULL DEFAULT 0,
@@ -1140,18 +1140,18 @@ DEFAULT CHARACTER SET = latin1;
 
 
 -- -----------------------------------------------------
--- Table `dbdotproject_g6`.`dotp_gacl_axo_groups_id_seq`
+-- Table `dotprojectplus_2025`.`dotp_gacl_axo_groups_id_seq`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `dbdotproject_g6`.`dotp_gacl_axo_groups_id_seq` (
+CREATE TABLE IF NOT EXISTS `dotprojectplus_2025`.`dotp_gacl_axo_groups_id_seq` (
   `id` INT(11) NOT NULL)
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = latin1;
 
 
 -- -----------------------------------------------------
--- Table `dbdotproject_g6`.`dotp_gacl_axo_groups_map`
+-- Table `dotprojectplus_2025`.`dotp_gacl_axo_groups_map`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `dbdotproject_g6`.`dotp_gacl_axo_groups_map` (
+CREATE TABLE IF NOT EXISTS `dotprojectplus_2025`.`dotp_gacl_axo_groups_map` (
   `acl_id` INT(11) NOT NULL DEFAULT 0,
   `group_id` INT(11) NOT NULL DEFAULT 0,
   PRIMARY KEY (`acl_id`, `group_id`))
@@ -1160,9 +1160,9 @@ DEFAULT CHARACTER SET = latin1;
 
 
 -- -----------------------------------------------------
--- Table `dbdotproject_g6`.`dotp_gacl_axo_map`
+-- Table `dotprojectplus_2025`.`dotp_gacl_axo_map`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `dbdotproject_g6`.`dotp_gacl_axo_map` (
+CREATE TABLE IF NOT EXISTS `dotprojectplus_2025`.`dotp_gacl_axo_map` (
   `acl_id` INT(11) NOT NULL DEFAULT 0,
   `section_value` VARCHAR(80) NOT NULL DEFAULT '0',
   `value` VARCHAR(80) NOT NULL DEFAULT '',
@@ -1172,9 +1172,9 @@ DEFAULT CHARACTER SET = latin1;
 
 
 -- -----------------------------------------------------
--- Table `dbdotproject_g6`.`dotp_gacl_axo_sections`
+-- Table `dotprojectplus_2025`.`dotp_gacl_axo_sections`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `dbdotproject_g6`.`dotp_gacl_axo_sections` (
+CREATE TABLE IF NOT EXISTS `dotprojectplus_2025`.`dotp_gacl_axo_sections` (
   `id` INT(11) NOT NULL DEFAULT 0,
   `value` VARCHAR(80) NOT NULL DEFAULT '',
   `order_value` INT(11) NOT NULL DEFAULT 0,
@@ -1188,27 +1188,27 @@ DEFAULT CHARACTER SET = latin1;
 
 
 -- -----------------------------------------------------
--- Table `dbdotproject_g6`.`dotp_gacl_axo_sections_seq`
+-- Table `dotprojectplus_2025`.`dotp_gacl_axo_sections_seq`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `dbdotproject_g6`.`dotp_gacl_axo_sections_seq` (
+CREATE TABLE IF NOT EXISTS `dotprojectplus_2025`.`dotp_gacl_axo_sections_seq` (
   `id` INT(11) NOT NULL)
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = latin1;
 
 
 -- -----------------------------------------------------
--- Table `dbdotproject_g6`.`dotp_gacl_axo_seq`
+-- Table `dotprojectplus_2025`.`dotp_gacl_axo_seq`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `dbdotproject_g6`.`dotp_gacl_axo_seq` (
+CREATE TABLE IF NOT EXISTS `dotprojectplus_2025`.`dotp_gacl_axo_seq` (
   `id` INT(11) NOT NULL)
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = latin1;
 
 
 -- -----------------------------------------------------
--- Table `dbdotproject_g6`.`dotp_gacl_groups_aro_map`
+-- Table `dotprojectplus_2025`.`dotp_gacl_groups_aro_map`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `dbdotproject_g6`.`dotp_gacl_groups_aro_map` (
+CREATE TABLE IF NOT EXISTS `dotprojectplus_2025`.`dotp_gacl_groups_aro_map` (
   `group_id` INT(11) NOT NULL DEFAULT 0,
   `aro_id` INT(11) NOT NULL DEFAULT 0,
   PRIMARY KEY (`group_id`, `aro_id`))
@@ -1217,9 +1217,9 @@ DEFAULT CHARACTER SET = latin1;
 
 
 -- -----------------------------------------------------
--- Table `dbdotproject_g6`.`dotp_gacl_groups_axo_map`
+-- Table `dotprojectplus_2025`.`dotp_gacl_groups_axo_map`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `dbdotproject_g6`.`dotp_gacl_groups_axo_map` (
+CREATE TABLE IF NOT EXISTS `dotprojectplus_2025`.`dotp_gacl_groups_axo_map` (
   `group_id` INT(11) NOT NULL DEFAULT 0,
   `axo_id` INT(11) NOT NULL DEFAULT 0,
   PRIMARY KEY (`group_id`, `axo_id`))
@@ -1228,9 +1228,9 @@ DEFAULT CHARACTER SET = latin1;
 
 
 -- -----------------------------------------------------
--- Table `dbdotproject_g6`.`dotp_gacl_phpgacl`
+-- Table `dotprojectplus_2025`.`dotp_gacl_phpgacl`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `dbdotproject_g6`.`dotp_gacl_phpgacl` (
+CREATE TABLE IF NOT EXISTS `dotprojectplus_2025`.`dotp_gacl_phpgacl` (
   `name` VARCHAR(230) NOT NULL DEFAULT '',
   `value` VARCHAR(230) NOT NULL DEFAULT '',
   PRIMARY KEY (`name`))
@@ -1239,9 +1239,9 @@ DEFAULT CHARACTER SET = latin1;
 
 
 -- -----------------------------------------------------
--- Table `dbdotproject_g6`.`dotp_tasks`
+-- Table `dotprojectplus_2025`.`dotp_tasks`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `dbdotproject_g6`.`dotp_tasks` (
+CREATE TABLE IF NOT EXISTS `dotprojectplus_2025`.`dotp_tasks` (
   `task_id` INT(11) NOT NULL AUTO_INCREMENT,
   `task_name` VARCHAR(255) NULL DEFAULT NULL,
   `task_parent` INT(11) NULL DEFAULT 0,
@@ -1282,9 +1282,9 @@ DEFAULT CHARACTER SET = utf8mb4;
 
 
 -- -----------------------------------------------------
--- Table `dbdotproject_g6`.`dotp_project_tasks_estimated_roles`
+-- Table `dotprojectplus_2025`.`dotp_project_tasks_estimated_roles`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `dbdotproject_g6`.`dotp_project_tasks_estimated_roles` (
+CREATE TABLE IF NOT EXISTS `dotprojectplus_2025`.`dotp_project_tasks_estimated_roles` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
   `task_id` INT(11) NULL DEFAULT NULL,
   `role_id` INT(11) NULL DEFAULT NULL,
@@ -1293,11 +1293,11 @@ CREATE TABLE IF NOT EXISTS `dbdotproject_g6`.`dotp_project_tasks_estimated_roles
   INDEX `fk_estimation_roles` (`role_id` ASC) VISIBLE,
   CONSTRAINT `fk_estimation_roles`
     FOREIGN KEY (`role_id`)
-    REFERENCES `dbdotproject_g6`.`dotp_company_role` (`id`)
+    REFERENCES `dotprojectplus_2025`.`dotp_company_role` (`id`)
     ON DELETE CASCADE,
   CONSTRAINT `fk_estimation_task_roles`
     FOREIGN KEY (`task_id`)
-    REFERENCES `dbdotproject_g6`.`dotp_tasks` (`task_id`)
+    REFERENCES `dotprojectplus_2025`.`dotp_tasks` (`task_id`)
     ON DELETE CASCADE)
 ENGINE = InnoDB
 AUTO_INCREMENT = 291
@@ -1305,9 +1305,9 @@ DEFAULT CHARACTER SET = utf8mb4;
 
 
 -- -----------------------------------------------------
--- Table `dbdotproject_g6`.`dotp_human_resource_allocation`
+-- Table `dotprojectplus_2025`.`dotp_human_resource_allocation`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `dbdotproject_g6`.`dotp_human_resource_allocation` (
+CREATE TABLE IF NOT EXISTS `dotprojectplus_2025`.`dotp_human_resource_allocation` (
   `human_resource_allocation_id` INT(11) NOT NULL AUTO_INCREMENT,
   `project_tasks_estimated_roles_id` INT(11) NOT NULL,
   `human_resource_id` INT(11) NOT NULL,
@@ -1316,12 +1316,12 @@ CREATE TABLE IF NOT EXISTS `dbdotproject_g6`.`dotp_human_resource_allocation` (
   INDEX `project_tasks_estimated_roles_id` (`project_tasks_estimated_roles_id` ASC) VISIBLE,
   CONSTRAINT `dotp_human_resource_allocation_ibfk_1`
     FOREIGN KEY (`human_resource_id`)
-    REFERENCES `dbdotproject_g6`.`dotp_human_resource` (`human_resource_id`)
+    REFERENCES `dotprojectplus_2025`.`dotp_human_resource` (`human_resource_id`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   CONSTRAINT `dotp_human_resource_allocation_ibfk_2`
     FOREIGN KEY (`project_tasks_estimated_roles_id`)
-    REFERENCES `dbdotproject_g6`.`dotp_project_tasks_estimated_roles` (`id`)
+    REFERENCES `dotprojectplus_2025`.`dotp_project_tasks_estimated_roles` (`id`)
     ON DELETE CASCADE
     ON UPDATE CASCADE)
 ENGINE = InnoDB
@@ -1330,9 +1330,9 @@ DEFAULT CHARACTER SET = utf8mb4;
 
 
 -- -----------------------------------------------------
--- Table `dbdotproject_g6`.`dotp_human_resource_roles`
+-- Table `dotprojectplus_2025`.`dotp_human_resource_roles`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `dbdotproject_g6`.`dotp_human_resource_roles` (
+CREATE TABLE IF NOT EXISTS `dotprojectplus_2025`.`dotp_human_resource_roles` (
   `human_resource_roles_id` INT(11) NOT NULL AUTO_INCREMENT,
   `human_resources_role_id` INT(11) NOT NULL,
   `human_resource_id` INT(11) NOT NULL,
@@ -1341,11 +1341,11 @@ CREATE TABLE IF NOT EXISTS `dbdotproject_g6`.`dotp_human_resource_roles` (
   INDEX `human_resource_id` (`human_resource_id` ASC) VISIBLE,
   CONSTRAINT `dotp_human_resource_roles_ibfk_1`
     FOREIGN KEY (`human_resources_role_id`)
-    REFERENCES `dbdotproject_g6`.`dotp_human_resources_role` (`human_resources_role_id`)
+    REFERENCES `dotprojectplus_2025`.`dotp_human_resources_role` (`human_resources_role_id`)
     ON DELETE CASCADE,
   CONSTRAINT `dotp_human_resource_roles_ibfk_2`
     FOREIGN KEY (`human_resource_id`)
-    REFERENCES `dbdotproject_g6`.`dotp_human_resource` (`human_resource_id`)
+    REFERENCES `dotprojectplus_2025`.`dotp_human_resource` (`human_resource_id`)
     ON DELETE CASCADE)
 ENGINE = InnoDB
 AUTO_INCREMENT = 43
@@ -1353,9 +1353,9 @@ DEFAULT CHARACTER SET = utf8mb4;
 
 
 -- -----------------------------------------------------
--- Table `dbdotproject_g6`.`dotp_initiating`
+-- Table `dotprojectplus_2025`.`dotp_initiating`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `dbdotproject_g6`.`dotp_initiating` (
+CREATE TABLE IF NOT EXISTS `dotprojectplus_2025`.`dotp_initiating` (
   `initiating_id` INT(11) NOT NULL AUTO_INCREMENT,
   `initiating_title` VARCHAR(255) NOT NULL,
   `initiating_manager` INT(11) NOT NULL,
@@ -1384,9 +1384,9 @@ DEFAULT CHARACTER SET = utf8mb4;
 
 
 -- -----------------------------------------------------
--- Table `dbdotproject_g6`.`dotp_initiating_stakeholder`
+-- Table `dotprojectplus_2025`.`dotp_initiating_stakeholder`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `dbdotproject_g6`.`dotp_initiating_stakeholder` (
+CREATE TABLE IF NOT EXISTS `dotprojectplus_2025`.`dotp_initiating_stakeholder` (
   `initiating_stakeholder_id` INT(11) NOT NULL AUTO_INCREMENT,
   `initiating_id` INT(11) NOT NULL,
   `contact_id` INT(11) NOT NULL,
@@ -1401,9 +1401,9 @@ DEFAULT CHARACTER SET = utf8mb4;
 
 
 -- -----------------------------------------------------
--- Table `dbdotproject_g6`.`dotp_modules`
+-- Table `dotprojectplus_2025`.`dotp_modules`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `dbdotproject_g6`.`dotp_modules` (
+CREATE TABLE IF NOT EXISTS `dotprojectplus_2025`.`dotp_modules` (
   `mod_id` INT(11) NOT NULL AUTO_INCREMENT,
   `mod_name` VARCHAR(64) NOT NULL DEFAULT '',
   `mod_directory` VARCHAR(64) NOT NULL DEFAULT '',
@@ -1426,9 +1426,9 @@ DEFAULT CHARACTER SET = utf8mb4;
 
 
 -- -----------------------------------------------------
--- Table `dbdotproject_g6`.`dotp_monitoring_baseline`
+-- Table `dotprojectplus_2025`.`dotp_monitoring_baseline`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `dbdotproject_g6`.`dotp_monitoring_baseline` (
+CREATE TABLE IF NOT EXISTS `dotprojectplus_2025`.`dotp_monitoring_baseline` (
   `baseline_id` INT(11) NOT NULL AUTO_INCREMENT,
   `project_id` INT(10) UNSIGNED NOT NULL DEFAULT 0,
   `baseline_name` VARCHAR(255) NULL DEFAULT NULL,
@@ -1443,9 +1443,9 @@ DEFAULT CHARACTER SET = utf8mb4;
 
 
 -- -----------------------------------------------------
--- Table `dbdotproject_g6`.`dotp_monitoring_baseline_task`
+-- Table `dotprojectplus_2025`.`dotp_monitoring_baseline_task`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `dbdotproject_g6`.`dotp_monitoring_baseline_task` (
+CREATE TABLE IF NOT EXISTS `dotprojectplus_2025`.`dotp_monitoring_baseline_task` (
   `baseline_task_id` INT(11) NOT NULL AUTO_INCREMENT,
   `baseline_id` INT(10) UNSIGNED NOT NULL DEFAULT 0,
   `task_id` INT(10) UNSIGNED NOT NULL DEFAULT 0,
@@ -1462,9 +1462,9 @@ DEFAULT CHARACTER SET = utf8mb4;
 
 
 -- -----------------------------------------------------
--- Table `dbdotproject_g6`.`dotp_monitoring_baseline_task_log`
+-- Table `dotprojectplus_2025`.`dotp_monitoring_baseline_task_log`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `dbdotproject_g6`.`dotp_monitoring_baseline_task_log` (
+CREATE TABLE IF NOT EXISTS `dotprojectplus_2025`.`dotp_monitoring_baseline_task_log` (
   `baseline_task_id_log` INT(11) NOT NULL AUTO_INCREMENT,
   `baseline_task_id` INT(10) UNSIGNED NOT NULL DEFAULT 0,
   `task_log_id` INT(10) UNSIGNED NOT NULL DEFAULT 0,
@@ -1478,9 +1478,9 @@ DEFAULT CHARACTER SET = utf8mb4;
 
 
 -- -----------------------------------------------------
--- Table `dbdotproject_g6`.`dotp_monitoring_baseline_user_cost`
+-- Table `dotprojectplus_2025`.`dotp_monitoring_baseline_user_cost`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `dbdotproject_g6`.`dotp_monitoring_baseline_user_cost` (
+CREATE TABLE IF NOT EXISTS `dotprojectplus_2025`.`dotp_monitoring_baseline_user_cost` (
   `baseline_cost_id` INT(11) NOT NULL AUTO_INCREMENT,
   `baseline_id` INT(10) UNSIGNED NOT NULL DEFAULT 0,
   `cost_id` INT(11) UNSIGNED NOT NULL DEFAULT 0,
@@ -1496,9 +1496,9 @@ DEFAULT CHARACTER SET = utf8mb4;
 
 
 -- -----------------------------------------------------
--- Table `dbdotproject_g6`.`dotp_monitoring_change_request`
+-- Table `dotprojectplus_2025`.`dotp_monitoring_change_request`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `dbdotproject_g6`.`dotp_monitoring_change_request` (
+CREATE TABLE IF NOT EXISTS `dotprojectplus_2025`.`dotp_monitoring_change_request` (
   `change_id` INT(10) NOT NULL AUTO_INCREMENT,
   `task_id` INT(10) NULL DEFAULT 0,
   `change_impact` INT(11) NOT NULL DEFAULT 0,
@@ -1516,9 +1516,9 @@ DEFAULT CHARACTER SET = utf8mb4;
 
 
 -- -----------------------------------------------------
--- Table `dbdotproject_g6`.`dotp_monitoring_meeting`
+-- Table `dotprojectplus_2025`.`dotp_monitoring_meeting`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `dbdotproject_g6`.`dotp_monitoring_meeting` (
+CREATE TABLE IF NOT EXISTS `dotprojectplus_2025`.`dotp_monitoring_meeting` (
   `meeting_id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT,
   `project_id` INT(10) UNSIGNED NOT NULL DEFAULT 0,
   `dt_meeting_begin` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP(),
@@ -1532,9 +1532,9 @@ DEFAULT CHARACTER SET = utf8mb4;
 
 
 -- -----------------------------------------------------
--- Table `dbdotproject_g6`.`dotp_monitoring_meeting_item`
+-- Table `dotprojectplus_2025`.`dotp_monitoring_meeting_item`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `dbdotproject_g6`.`dotp_monitoring_meeting_item` (
+CREATE TABLE IF NOT EXISTS `dotprojectplus_2025`.`dotp_monitoring_meeting_item` (
   `meeting_item_id` INT(11) NOT NULL AUTO_INCREMENT,
   `meeting_item_description` TEXT NULL DEFAULT NULL,
   `knownledge_area` TEXT NULL DEFAULT NULL,
@@ -1547,9 +1547,9 @@ DEFAULT CHARACTER SET = utf8mb4;
 
 
 -- -----------------------------------------------------
--- Table `dbdotproject_g6`.`dotp_monitoring_meeting_item_select`
+-- Table `dotprojectplus_2025`.`dotp_monitoring_meeting_item_select`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `dbdotproject_g6`.`dotp_monitoring_meeting_item_select` (
+CREATE TABLE IF NOT EXISTS `dotprojectplus_2025`.`dotp_monitoring_meeting_item_select` (
   `meeting_item_select_id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT,
   `meeting_item_id` INT(10) UNSIGNED NOT NULL DEFAULT 0,
   `meeting_id` INT(10) UNSIGNED NOT NULL DEFAULT 0,
@@ -1560,9 +1560,9 @@ DEFAULT CHARACTER SET = utf8mb4;
 
 
 -- -----------------------------------------------------
--- Table `dbdotproject_g6`.`dotp_monitoring_meeting_item_senior`
+-- Table `dotprojectplus_2025`.`dotp_monitoring_meeting_item_senior`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `dbdotproject_g6`.`dotp_monitoring_meeting_item_senior` (
+CREATE TABLE IF NOT EXISTS `dotprojectplus_2025`.`dotp_monitoring_meeting_item_senior` (
   `meeting_item_senior_id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT,
   `meeting_percentual` DECIMAL(10,2) NULL DEFAULT 0.00,
   `meeting_size` INT(10) UNSIGNED NOT NULL DEFAULT 0,
@@ -1579,9 +1579,9 @@ DEFAULT CHARACTER SET = utf8mb4;
 
 
 -- -----------------------------------------------------
--- Table `dbdotproject_g6`.`dotp_monitoring_meeting_item_tasks_delivered`
+-- Table `dotprojectplus_2025`.`dotp_monitoring_meeting_item_tasks_delivered`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `dbdotproject_g6`.`dotp_monitoring_meeting_item_tasks_delivered` (
+CREATE TABLE IF NOT EXISTS `dotprojectplus_2025`.`dotp_monitoring_meeting_item_tasks_delivered` (
   `meeting_item_taks_delivered_id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT,
   `task_id` INT(10) UNSIGNED NOT NULL DEFAULT 0,
   `meeting_id` INT(10) UNSIGNED NOT NULL DEFAULT 0,
@@ -1591,9 +1591,9 @@ DEFAULT CHARACTER SET = utf8mb4;
 
 
 -- -----------------------------------------------------
--- Table `dbdotproject_g6`.`dotp_monitoring_meeting_type`
+-- Table `dotprojectplus_2025`.`dotp_monitoring_meeting_type`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `dbdotproject_g6`.`dotp_monitoring_meeting_type` (
+CREATE TABLE IF NOT EXISTS `dotprojectplus_2025`.`dotp_monitoring_meeting_type` (
   `meeting_type_id` INT(11) NOT NULL AUTO_INCREMENT,
   `meeting_type_name` VARCHAR(255) NULL DEFAULT NULL,
   PRIMARY KEY (`meeting_type_id`))
@@ -1603,9 +1603,9 @@ DEFAULT CHARACTER SET = utf8mb4;
 
 
 -- -----------------------------------------------------
--- Table `dbdotproject_g6`.`dotp_monitoring_meeting_user`
+-- Table `dotprojectplus_2025`.`dotp_monitoring_meeting_user`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `dbdotproject_g6`.`dotp_monitoring_meeting_user` (
+CREATE TABLE IF NOT EXISTS `dotprojectplus_2025`.`dotp_monitoring_meeting_user` (
   `meeting_user_id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT,
   `user_id` INT(10) UNSIGNED NOT NULL DEFAULT 0,
   `meeting_id` INT(10) UNSIGNED NOT NULL DEFAULT 0,
@@ -1615,9 +1615,9 @@ DEFAULT CHARACTER SET = utf8mb4;
 
 
 -- -----------------------------------------------------
--- Table `dbdotproject_g6`.`dotp_monitoring_quality`
+-- Table `dotprojectplus_2025`.`dotp_monitoring_quality`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `dbdotproject_g6`.`dotp_monitoring_quality` (
+CREATE TABLE IF NOT EXISTS `dotprojectplus_2025`.`dotp_monitoring_quality` (
   `quality_id` INT(11) NOT NULL AUTO_INCREMENT,
   `quality_type_id` INT(11) NOT NULL,
   `quality_description` TEXT NULL DEFAULT NULL,
@@ -1631,9 +1631,9 @@ DEFAULT CHARACTER SET = utf8mb4;
 
 
 -- -----------------------------------------------------
--- Table `dbdotproject_g6`.`dotp_monitoring_quality_status`
+-- Table `dotprojectplus_2025`.`dotp_monitoring_quality_status`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `dbdotproject_g6`.`dotp_monitoring_quality_status` (
+CREATE TABLE IF NOT EXISTS `dotprojectplus_2025`.`dotp_monitoring_quality_status` (
   `quality_status_id` INT(11) NOT NULL AUTO_INCREMENT,
   `quality_status_name` VARCHAR(255) NULL DEFAULT NULL,
   PRIMARY KEY (`quality_status_id`))
@@ -1643,9 +1643,9 @@ DEFAULT CHARACTER SET = utf8mb4;
 
 
 -- -----------------------------------------------------
--- Table `dbdotproject_g6`.`dotp_monitoring_quality_type`
+-- Table `dotprojectplus_2025`.`dotp_monitoring_quality_type`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `dbdotproject_g6`.`dotp_monitoring_quality_type` (
+CREATE TABLE IF NOT EXISTS `dotprojectplus_2025`.`dotp_monitoring_quality_type` (
   `quality_type_id` INT(11) NOT NULL AUTO_INCREMENT,
   `quality_type_name` VARCHAR(255) NULL DEFAULT NULL,
   PRIMARY KEY (`quality_type_id`))
@@ -1655,9 +1655,9 @@ DEFAULT CHARACTER SET = utf8mb4;
 
 
 -- -----------------------------------------------------
--- Table `dbdotproject_g6`.`dotp_monitoring_responsibility_matriz`
+-- Table `dotprojectplus_2025`.`dotp_monitoring_responsibility_matriz`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `dbdotproject_g6`.`dotp_monitoring_responsibility_matriz` (
+CREATE TABLE IF NOT EXISTS `dotprojectplus_2025`.`dotp_monitoring_responsibility_matriz` (
   `responsibility_id` INT(11) NOT NULL AUTO_INCREMENT,
   `responsibility_description` VARCHAR(255) NULL DEFAULT NULL,
   `responsibility_user_id_consultation` INT(11) NULL DEFAULT NULL,
@@ -1671,9 +1671,9 @@ DEFAULT CHARACTER SET = utf8mb4;
 
 
 -- -----------------------------------------------------
--- Table `dbdotproject_g6`.`dotp_monitoring_user_cost`
+-- Table `dotprojectplus_2025`.`dotp_monitoring_user_cost`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `dbdotproject_g6`.`dotp_monitoring_user_cost` (
+CREATE TABLE IF NOT EXISTS `dotprojectplus_2025`.`dotp_monitoring_user_cost` (
   `cost_id` INT(11) NOT NULL AUTO_INCREMENT,
   `user_id` INT(11) NOT NULL,
   `cost_value` DECIMAL(10,2) NULL DEFAULT 0.00,
@@ -1687,24 +1687,24 @@ DEFAULT CHARACTER SET = utf8mb4;
 
 
 -- -----------------------------------------------------
--- Table `dbdotproject_g6`.`dotp_need_for_training`
+-- Table `dotprojectplus_2025`.`dotp_need_for_training`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `dbdotproject_g6`.`dotp_need_for_training` (
+CREATE TABLE IF NOT EXISTS `dotprojectplus_2025`.`dotp_need_for_training` (
   `project_id` INT(11) NOT NULL,
   `description` TEXT NULL DEFAULT NULL,
   PRIMARY KEY (`project_id`),
   CONSTRAINT `FK_PROJECT_NEED_FOR_TRAINING`
     FOREIGN KEY (`project_id`)
-    REFERENCES `dbdotproject_g6`.`dotp_projects` (`project_id`)
+    REFERENCES `dotprojectplus_2025`.`dotp_projects` (`project_id`)
     ON DELETE CASCADE)
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = latin1;
 
 
 -- -----------------------------------------------------
--- Table `dbdotproject_g6`.`dotp_permissions`
+-- Table `dotprojectplus_2025`.`dotp_permissions`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `dbdotproject_g6`.`dotp_permissions` (
+CREATE TABLE IF NOT EXISTS `dotprojectplus_2025`.`dotp_permissions` (
   `permission_id` INT(11) NOT NULL AUTO_INCREMENT,
   `permission_user` INT(11) NOT NULL DEFAULT 0,
   `permission_grant_on` VARCHAR(12) NOT NULL DEFAULT '',
@@ -1720,9 +1720,9 @@ DEFAULT CHARACTER SET = utf8mb4;
 
 
 -- -----------------------------------------------------
--- Table `dbdotproject_g6`.`dotp_post_mortem_analysis`
+-- Table `dotprojectplus_2025`.`dotp_post_mortem_analysis`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `dbdotproject_g6`.`dotp_post_mortem_analysis` (
+CREATE TABLE IF NOT EXISTS `dotprojectplus_2025`.`dotp_post_mortem_analysis` (
   `pma_id` INT(11) NOT NULL AUTO_INCREMENT,
   `project_name` VARCHAR(255) NOT NULL DEFAULT '',
   `project_start_date` DATETIME NULL DEFAULT NULL,
@@ -1743,9 +1743,9 @@ DEFAULT CHARACTER SET = utf8mb4;
 
 
 -- -----------------------------------------------------
--- Table `dbdotproject_g6`.`dotp_project_contacts`
+-- Table `dotprojectplus_2025`.`dotp_project_contacts`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `dbdotproject_g6`.`dotp_project_contacts` (
+CREATE TABLE IF NOT EXISTS `dotprojectplus_2025`.`dotp_project_contacts` (
   `project_id` INT(10) NOT NULL,
   `contact_id` INT(10) NOT NULL)
 ENGINE = InnoDB
@@ -1753,9 +1753,9 @@ DEFAULT CHARACTER SET = latin1;
 
 
 -- -----------------------------------------------------
--- Table `dbdotproject_g6`.`dotp_project_departments`
+-- Table `dotprojectplus_2025`.`dotp_project_departments`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `dbdotproject_g6`.`dotp_project_departments` (
+CREATE TABLE IF NOT EXISTS `dotprojectplus_2025`.`dotp_project_departments` (
   `project_id` INT(10) NOT NULL,
   `department_id` INT(10) NOT NULL)
 ENGINE = InnoDB
@@ -1763,9 +1763,9 @@ DEFAULT CHARACTER SET = latin1;
 
 
 -- -----------------------------------------------------
--- Table `dbdotproject_g6`.`dotp_project_ear_items`
+-- Table `dotprojectplus_2025`.`dotp_project_ear_items`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `dbdotproject_g6`.`dotp_project_ear_items` (
+CREATE TABLE IF NOT EXISTS `dotprojectplus_2025`.`dotp_project_ear_items` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
   `project_id` INT(11) NULL DEFAULT NULL,
   `sort_order` INT(11) NULL DEFAULT NULL,
@@ -1777,7 +1777,7 @@ CREATE TABLE IF NOT EXISTS `dbdotproject_g6`.`dotp_project_ear_items` (
   INDEX `fk_ear_item_project` (`project_id` ASC) VISIBLE,
   CONSTRAINT `fk_ear_item_project`
     FOREIGN KEY (`project_id`)
-    REFERENCES `dbdotproject_g6`.`dotp_projects` (`project_id`)
+    REFERENCES `dotprojectplus_2025`.`dotp_projects` (`project_id`)
     ON DELETE CASCADE)
 ENGINE = InnoDB
 AUTO_INCREMENT = 14
@@ -1785,9 +1785,9 @@ DEFAULT CHARACTER SET = utf8mb4;
 
 
 -- -----------------------------------------------------
--- Table `dbdotproject_g6`.`dotp_project_minutes`
+-- Table `dotprojectplus_2025`.`dotp_project_minutes`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `dbdotproject_g6`.`dotp_project_minutes` (
+CREATE TABLE IF NOT EXISTS `dotprojectplus_2025`.`dotp_project_minutes` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
   `project_id` INT(11) NULL DEFAULT NULL,
   `minute_date` DATETIME NULL DEFAULT NULL,
@@ -1800,7 +1800,7 @@ CREATE TABLE IF NOT EXISTS `dbdotproject_g6`.`dotp_project_minutes` (
   INDEX `fk_minute_project` (`project_id` ASC) VISIBLE,
   CONSTRAINT `fk_minute_project`
     FOREIGN KEY (`project_id`)
-    REFERENCES `dbdotproject_g6`.`dotp_projects` (`project_id`)
+    REFERENCES `dotprojectplus_2025`.`dotp_projects` (`project_id`)
     ON DELETE CASCADE)
 ENGINE = InnoDB
 AUTO_INCREMENT = 2
@@ -1808,9 +1808,9 @@ DEFAULT CHARACTER SET = utf8mb4;
 
 
 -- -----------------------------------------------------
--- Table `dbdotproject_g6`.`dotp_project_tasks_estimations`
+-- Table `dotprojectplus_2025`.`dotp_project_tasks_estimations`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `dbdotproject_g6`.`dotp_project_tasks_estimations` (
+CREATE TABLE IF NOT EXISTS `dotprojectplus_2025`.`dotp_project_tasks_estimations` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
   `task_id` INT(11) NULL DEFAULT NULL,
   `effort` FLOAT NULL DEFAULT NULL,
@@ -1820,7 +1820,7 @@ CREATE TABLE IF NOT EXISTS `dbdotproject_g6`.`dotp_project_tasks_estimations` (
   INDEX `fk_estimation_task_attributes` (`task_id` ASC) VISIBLE,
   CONSTRAINT `fk_estimation_task_attributes`
     FOREIGN KEY (`task_id`)
-    REFERENCES `dbdotproject_g6`.`dotp_tasks` (`task_id`)
+    REFERENCES `dotprojectplus_2025`.`dotp_tasks` (`task_id`)
     ON DELETE CASCADE)
 ENGINE = InnoDB
 AUTO_INCREMENT = 109
@@ -1828,9 +1828,9 @@ DEFAULT CHARACTER SET = utf8mb4;
 
 
 -- -----------------------------------------------------
--- Table `dbdotproject_g6`.`dotp_quality_planning`
+-- Table `dotprojectplus_2025`.`dotp_quality_planning`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `dbdotproject_g6`.`dotp_quality_planning` (
+CREATE TABLE IF NOT EXISTS `dotprojectplus_2025`.`dotp_quality_planning` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
   `project_id` INT(11) NULL DEFAULT NULL,
   `quality_controlling` TEXT NULL DEFAULT NULL,
@@ -1840,7 +1840,7 @@ CREATE TABLE IF NOT EXISTS `dbdotproject_g6`.`dotp_quality_planning` (
   INDEX `FK_PROJECT_ACQUISITION` (`project_id` ASC) VISIBLE,
   CONSTRAINT `FK_PROJECT_ACQUISITION`
     FOREIGN KEY (`project_id`)
-    REFERENCES `dbdotproject_g6`.`dotp_projects` (`project_id`)
+    REFERENCES `dotprojectplus_2025`.`dotp_projects` (`project_id`)
     ON DELETE CASCADE)
 ENGINE = InnoDB
 AUTO_INCREMENT = 5
@@ -1848,9 +1848,9 @@ DEFAULT CHARACTER SET = utf8mb4;
 
 
 -- -----------------------------------------------------
--- Table `dbdotproject_g6`.`dotp_quality_assurance_item`
+-- Table `dotprojectplus_2025`.`dotp_quality_assurance_item`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `dbdotproject_g6`.`dotp_quality_assurance_item` (
+CREATE TABLE IF NOT EXISTS `dotprojectplus_2025`.`dotp_quality_assurance_item` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
   `quality_planning_id` INT(11) NULL DEFAULT NULL,
   `what` TEXT NULL DEFAULT NULL,
@@ -1861,7 +1861,7 @@ CREATE TABLE IF NOT EXISTS `dbdotproject_g6`.`dotp_quality_assurance_item` (
   INDEX `FK_PROJECT_QUALITY_ASSURANCE_ITEM` (`quality_planning_id` ASC) VISIBLE,
   CONSTRAINT `FK_PROJECT_QUALITY_ASSURANCE_ITEM`
     FOREIGN KEY (`quality_planning_id`)
-    REFERENCES `dbdotproject_g6`.`dotp_quality_planning` (`id`)
+    REFERENCES `dotprojectplus_2025`.`dotp_quality_planning` (`id`)
     ON DELETE CASCADE)
 ENGINE = InnoDB
 AUTO_INCREMENT = 13
@@ -1869,9 +1869,9 @@ DEFAULT CHARACTER SET = utf8mb4;
 
 
 -- -----------------------------------------------------
--- Table `dbdotproject_g6`.`dotp_quality_control_goal`
+-- Table `dotprojectplus_2025`.`dotp_quality_control_goal`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `dbdotproject_g6`.`dotp_quality_control_goal` (
+CREATE TABLE IF NOT EXISTS `dotprojectplus_2025`.`dotp_quality_control_goal` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
   `quality_planning_id` INT(11) NULL DEFAULT NULL,
   `gqm_goal_object` TEXT NULL DEFAULT NULL,
@@ -1883,7 +1883,7 @@ CREATE TABLE IF NOT EXISTS `dbdotproject_g6`.`dotp_quality_control_goal` (
   INDEX `FK_PROJECT_QUALITY_CONTROL_GOAL` (`quality_planning_id` ASC) VISIBLE,
   CONSTRAINT `FK_PROJECT_QUALITY_CONTROL_GOAL`
     FOREIGN KEY (`quality_planning_id`)
-    REFERENCES `dbdotproject_g6`.`dotp_quality_planning` (`id`)
+    REFERENCES `dotprojectplus_2025`.`dotp_quality_planning` (`id`)
     ON DELETE CASCADE)
 ENGINE = InnoDB
 AUTO_INCREMENT = 11
@@ -1891,9 +1891,9 @@ DEFAULT CHARACTER SET = utf8mb4;
 
 
 -- -----------------------------------------------------
--- Table `dbdotproject_g6`.`dotp_quality_control_analiysis_question`
+-- Table `dotprojectplus_2025`.`dotp_quality_control_analiysis_question`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `dbdotproject_g6`.`dotp_quality_control_analiysis_question` (
+CREATE TABLE IF NOT EXISTS `dotprojectplus_2025`.`dotp_quality_control_analiysis_question` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
   `goal_id` INT(11) NULL DEFAULT NULL,
   `question` TEXT NULL DEFAULT NULL,
@@ -1902,7 +1902,7 @@ CREATE TABLE IF NOT EXISTS `dbdotproject_g6`.`dotp_quality_control_analiysis_que
   INDEX `FK_PROJECT_QUALITY_GOAL_QUESTION` (`goal_id` ASC) VISIBLE,
   CONSTRAINT `FK_PROJECT_QUALITY_GOAL_QUESTION`
     FOREIGN KEY (`goal_id`)
-    REFERENCES `dbdotproject_g6`.`dotp_quality_control_goal` (`id`)
+    REFERENCES `dotprojectplus_2025`.`dotp_quality_control_goal` (`id`)
     ON DELETE CASCADE)
 ENGINE = InnoDB
 AUTO_INCREMENT = 55
@@ -1910,9 +1910,9 @@ DEFAULT CHARACTER SET = utf8mb4;
 
 
 -- -----------------------------------------------------
--- Table `dbdotproject_g6`.`dotp_quality_control_metric`
+-- Table `dotprojectplus_2025`.`dotp_quality_control_metric`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `dbdotproject_g6`.`dotp_quality_control_metric` (
+CREATE TABLE IF NOT EXISTS `dotprojectplus_2025`.`dotp_quality_control_metric` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
   `question_id` INT(11) NULL DEFAULT NULL,
   `metric` TEXT NULL DEFAULT NULL,
@@ -1921,7 +1921,7 @@ CREATE TABLE IF NOT EXISTS `dbdotproject_g6`.`dotp_quality_control_metric` (
   INDEX `FK_PROJECT_QUALITY_METRIC` (`question_id` ASC) VISIBLE,
   CONSTRAINT `FK_PROJECT_QUALITY_METRIC`
     FOREIGN KEY (`question_id`)
-    REFERENCES `dbdotproject_g6`.`dotp_quality_control_analiysis_question` (`id`)
+    REFERENCES `dotprojectplus_2025`.`dotp_quality_control_analiysis_question` (`id`)
     ON DELETE CASCADE)
 ENGINE = InnoDB
 AUTO_INCREMENT = 16
@@ -1929,9 +1929,9 @@ DEFAULT CHARACTER SET = utf8mb4;
 
 
 -- -----------------------------------------------------
--- Table `dbdotproject_g6`.`dotp_quality_control_requirement`
+-- Table `dotprojectplus_2025`.`dotp_quality_control_requirement`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `dbdotproject_g6`.`dotp_quality_control_requirement` (
+CREATE TABLE IF NOT EXISTS `dotprojectplus_2025`.`dotp_quality_control_requirement` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
   `quality_planning_id` INT(11) NULL DEFAULT NULL,
   `requirement` TEXT NULL DEFAULT NULL,
@@ -1939,7 +1939,7 @@ CREATE TABLE IF NOT EXISTS `dbdotproject_g6`.`dotp_quality_control_requirement` 
   INDEX `FK_PROJECT_QUALITY_CONTROL_REQUIREMENT` (`quality_planning_id` ASC) VISIBLE,
   CONSTRAINT `FK_PROJECT_QUALITY_CONTROL_REQUIREMENT`
     FOREIGN KEY (`quality_planning_id`)
-    REFERENCES `dbdotproject_g6`.`dotp_quality_planning` (`id`)
+    REFERENCES `dotprojectplus_2025`.`dotp_quality_planning` (`id`)
     ON DELETE CASCADE)
 ENGINE = InnoDB
 AUTO_INCREMENT = 7
@@ -1947,9 +1947,9 @@ DEFAULT CHARACTER SET = utf8mb4;
 
 
 -- -----------------------------------------------------
--- Table `dbdotproject_g6`.`dotp_risks`
+-- Table `dotprojectplus_2025`.`dotp_risks`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `dbdotproject_g6`.`dotp_risks` (
+CREATE TABLE IF NOT EXISTS `dotprojectplus_2025`.`dotp_risks` (
   `risk_id` INT(11) NOT NULL AUTO_INCREMENT,
   `risk_name` VARCHAR(255) NOT NULL,
   `risk_cause` VARCHAR(255) NOT NULL,
@@ -1982,9 +1982,9 @@ DEFAULT CHARACTER SET = utf8mb4;
 
 
 -- -----------------------------------------------------
--- Table `dbdotproject_g6`.`dotp_risks_management_plan`
+-- Table `dotprojectplus_2025`.`dotp_risks_management_plan`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `dbdotproject_g6`.`dotp_risks_management_plan` (
+CREATE TABLE IF NOT EXISTS `dotprojectplus_2025`.`dotp_risks_management_plan` (
   `risk_plan_id` INT(11) NOT NULL DEFAULT 0,
   `project_id` INT(11) NULL DEFAULT NULL,
   `probability_super_low` VARCHAR(250) NULL DEFAULT NULL,
@@ -2030,9 +2030,9 @@ DEFAULT CHARACTER SET = latin1;
 
 
 -- -----------------------------------------------------
--- Table `dbdotproject_g6`.`dotp_roles`
+-- Table `dotprojectplus_2025`.`dotp_roles`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `dbdotproject_g6`.`dotp_roles` (
+CREATE TABLE IF NOT EXISTS `dotprojectplus_2025`.`dotp_roles` (
   `role_id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT,
   `role_name` VARCHAR(24) NOT NULL DEFAULT '',
   `role_description` VARCHAR(255) NOT NULL DEFAULT '',
@@ -2044,9 +2044,9 @@ DEFAULT CHARACTER SET = utf8mb4;
 
 
 -- -----------------------------------------------------
--- Table `dbdotproject_g6`.`dotp_sessions`
+-- Table `dotprojectplus_2025`.`dotp_sessions`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `dbdotproject_g6`.`dotp_sessions` (
+CREATE TABLE IF NOT EXISTS `dotprojectplus_2025`.`dotp_sessions` (
   `session_id` VARCHAR(60) NOT NULL DEFAULT '',
   `session_user` INT(11) NOT NULL DEFAULT 0,
   `session_data` LONGBLOB NULL DEFAULT NULL,
@@ -2060,9 +2060,9 @@ DEFAULT CHARACTER SET = latin1;
 
 
 -- -----------------------------------------------------
--- Table `dbdotproject_g6`.`dotp_syskeys`
+-- Table `dotprojectplus_2025`.`dotp_syskeys`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `dbdotproject_g6`.`dotp_syskeys` (
+CREATE TABLE IF NOT EXISTS `dotprojectplus_2025`.`dotp_syskeys` (
   `syskey_id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT,
   `syskey_name` VARCHAR(48) NOT NULL DEFAULT '',
   `syskey_label` VARCHAR(255) NOT NULL DEFAULT '',
@@ -2078,9 +2078,9 @@ DEFAULT CHARACTER SET = utf8mb4;
 
 
 -- -----------------------------------------------------
--- Table `dbdotproject_g6`.`dotp_sysvals`
+-- Table `dotprojectplus_2025`.`dotp_sysvals`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `dbdotproject_g6`.`dotp_sysvals` (
+CREATE TABLE IF NOT EXISTS `dotprojectplus_2025`.`dotp_sysvals` (
   `sysval_id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT,
   `sysval_key_id` INT(10) UNSIGNED NOT NULL DEFAULT 0,
   `sysval_title` VARCHAR(48) NOT NULL DEFAULT '',
@@ -2093,9 +2093,9 @@ DEFAULT CHARACTER SET = utf8mb4;
 
 
 -- -----------------------------------------------------
--- Table `dbdotproject_g6`.`dotp_task_contacts`
+-- Table `dotprojectplus_2025`.`dotp_task_contacts`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `dbdotproject_g6`.`dotp_task_contacts` (
+CREATE TABLE IF NOT EXISTS `dotprojectplus_2025`.`dotp_task_contacts` (
   `task_id` INT(10) NOT NULL,
   `contact_id` INT(10) NOT NULL,
   INDEX `idx_task_contacts` (`task_id` ASC) VISIBLE)
@@ -2104,9 +2104,9 @@ DEFAULT CHARACTER SET = latin1;
 
 
 -- -----------------------------------------------------
--- Table `dbdotproject_g6`.`dotp_task_departments`
+-- Table `dotprojectplus_2025`.`dotp_task_departments`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `dbdotproject_g6`.`dotp_task_departments` (
+CREATE TABLE IF NOT EXISTS `dotprojectplus_2025`.`dotp_task_departments` (
   `task_id` INT(10) NOT NULL,
   `department_id` INT(10) NOT NULL,
   INDEX `idx_task_departments` (`task_id` ASC) VISIBLE)
@@ -2115,9 +2115,9 @@ DEFAULT CHARACTER SET = latin1;
 
 
 -- -----------------------------------------------------
--- Table `dbdotproject_g6`.`dotp_task_dependencies`
+-- Table `dotprojectplus_2025`.`dotp_task_dependencies`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `dbdotproject_g6`.`dotp_task_dependencies` (
+CREATE TABLE IF NOT EXISTS `dotprojectplus_2025`.`dotp_task_dependencies` (
   `dependencies_task_id` INT(11) NOT NULL,
   `dependencies_req_task_id` INT(11) NOT NULL,
   PRIMARY KEY (`dependencies_task_id`, `dependencies_req_task_id`))
@@ -2126,9 +2126,9 @@ DEFAULT CHARACTER SET = latin1;
 
 
 -- -----------------------------------------------------
--- Table `dbdotproject_g6`.`dotp_task_log`
+-- Table `dotprojectplus_2025`.`dotp_task_log`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `dbdotproject_g6`.`dotp_task_log` (
+CREATE TABLE IF NOT EXISTS `dotprojectplus_2025`.`dotp_task_log` (
   `task_log_id` INT(11) NOT NULL AUTO_INCREMENT,
   `task_log_task` INT(11) NOT NULL DEFAULT 0,
   `task_log_name` VARCHAR(255) NULL DEFAULT NULL,
@@ -2148,9 +2148,9 @@ DEFAULT CHARACTER SET = utf8mb4;
 
 
 -- -----------------------------------------------------
--- Table `dbdotproject_g6`.`dotp_task_minute_members`
+-- Table `dotprojectplus_2025`.`dotp_task_minute_members`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `dbdotproject_g6`.`dotp_task_minute_members` (
+CREATE TABLE IF NOT EXISTS `dotprojectplus_2025`.`dotp_task_minute_members` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
   `user_id` INT(11) NULL DEFAULT NULL,
   `task_minute_id` INT(11) NULL DEFAULT NULL,
@@ -2159,11 +2159,11 @@ CREATE TABLE IF NOT EXISTS `dbdotproject_g6`.`dotp_task_minute_members` (
   INDEX `fk_task_minute_partipant_user` (`user_id` ASC) VISIBLE,
   CONSTRAINT `fk_task_minute_partipant_task`
     FOREIGN KEY (`task_minute_id`)
-    REFERENCES `dbdotproject_g6`.`dotp_project_minutes` (`id`)
+    REFERENCES `dotprojectplus_2025`.`dotp_project_minutes` (`id`)
     ON DELETE CASCADE,
   CONSTRAINT `fk_task_minute_partipant_user`
     FOREIGN KEY (`user_id`)
-    REFERENCES `dbdotproject_g6`.`dotp_contacts` (`contact_id`)
+    REFERENCES `dotprojectplus_2025`.`dotp_contacts` (`contact_id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
@@ -2172,9 +2172,9 @@ DEFAULT CHARACTER SET = utf8mb4;
 
 
 -- -----------------------------------------------------
--- Table `dbdotproject_g6`.`dotp_tasks_mdp`
+-- Table `dotprojectplus_2025`.`dotp_tasks_mdp`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `dbdotproject_g6`.`dotp_tasks_mdp` (
+CREATE TABLE IF NOT EXISTS `dotprojectplus_2025`.`dotp_tasks_mdp` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
   `task_id` INT(11) NULL DEFAULT NULL,
   `pos_x` INT(11) NULL DEFAULT NULL,
@@ -2183,7 +2183,7 @@ CREATE TABLE IF NOT EXISTS `dbdotproject_g6`.`dotp_tasks_mdp` (
   INDEX `fk_mdp_task` (`task_id` ASC) VISIBLE,
   CONSTRAINT `fk_mdp_task`
     FOREIGN KEY (`task_id`)
-    REFERENCES `dbdotproject_g6`.`dotp_tasks` (`task_id`)
+    REFERENCES `dotprojectplus_2025`.`dotp_tasks` (`task_id`)
     ON DELETE CASCADE)
 ENGINE = InnoDB
 AUTO_INCREMENT = 19
@@ -2191,24 +2191,24 @@ DEFAULT CHARACTER SET = utf8mb4;
 
 
 -- -----------------------------------------------------
--- Table `dbdotproject_g6`.`dotp_tasks_workpackages`
+-- Table `dotprojectplus_2025`.`dotp_tasks_workpackages`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `dbdotproject_g6`.`dotp_tasks_workpackages` (
+CREATE TABLE IF NOT EXISTS `dotprojectplus_2025`.`dotp_tasks_workpackages` (
   `task_id` INT(11) NOT NULL DEFAULT 0,
   `eap_item_id` INT(11) NULL DEFAULT NULL,
   PRIMARY KEY (`task_id`),
   CONSTRAINT `fk_task_eap_item`
     FOREIGN KEY (`task_id`)
-    REFERENCES `dbdotproject_g6`.`dotp_tasks` (`task_id`)
+    REFERENCES `dotprojectplus_2025`.`dotp_tasks` (`task_id`)
     ON DELETE CASCADE)
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = latin1;
 
 
 -- -----------------------------------------------------
--- Table `dbdotproject_g6`.`dotp_tickets`
+-- Table `dotprojectplus_2025`.`dotp_tickets`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `dbdotproject_g6`.`dotp_tickets` (
+CREATE TABLE IF NOT EXISTS `dotprojectplus_2025`.`dotp_tickets` (
   `ticket` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT,
   `ticket_company` INT(10) NOT NULL DEFAULT 0,
   `ticket_project` INT(10) NOT NULL DEFAULT 0,
@@ -2233,9 +2233,9 @@ DEFAULT CHARACTER SET = utf8mb4;
 
 
 -- -----------------------------------------------------
--- Table `dbdotproject_g6`.`dotp_user_access_log`
+-- Table `dotprojectplus_2025`.`dotp_user_access_log`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `dbdotproject_g6`.`dotp_user_access_log` (
+CREATE TABLE IF NOT EXISTS `dotprojectplus_2025`.`dotp_user_access_log` (
   `user_access_log_id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT,
   `user_id` INT(10) UNSIGNED NOT NULL,
   `user_ip` VARCHAR(15) NOT NULL,
@@ -2249,9 +2249,9 @@ DEFAULT CHARACTER SET = utf8mb4;
 
 
 -- -----------------------------------------------------
--- Table `dbdotproject_g6`.`dotp_user_events`
+-- Table `dotprojectplus_2025`.`dotp_user_events`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `dbdotproject_g6`.`dotp_user_events` (
+CREATE TABLE IF NOT EXISTS `dotprojectplus_2025`.`dotp_user_events` (
   `user_id` INT(11) NOT NULL DEFAULT 0,
   `event_id` INT(11) NOT NULL DEFAULT 0,
   INDEX `uek1` (`user_id` ASC, `event_id` ASC) VISIBLE,
@@ -2261,9 +2261,9 @@ DEFAULT CHARACTER SET = latin1;
 
 
 -- -----------------------------------------------------
--- Table `dbdotproject_g6`.`dotp_user_preferences`
+-- Table `dotprojectplus_2025`.`dotp_user_preferences`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `dbdotproject_g6`.`dotp_user_preferences` (
+CREATE TABLE IF NOT EXISTS `dotprojectplus_2025`.`dotp_user_preferences` (
   `pref_user` VARCHAR(12) NOT NULL DEFAULT '',
   `pref_name` VARCHAR(72) NOT NULL DEFAULT '',
   `pref_value` VARCHAR(32) NOT NULL DEFAULT '',
@@ -2273,9 +2273,9 @@ DEFAULT CHARACTER SET = latin1;
 
 
 -- -----------------------------------------------------
--- Table `dbdotproject_g6`.`dotp_user_roles`
+-- Table `dotprojectplus_2025`.`dotp_user_roles`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `dbdotproject_g6`.`dotp_user_roles` (
+CREATE TABLE IF NOT EXISTS `dotprojectplus_2025`.`dotp_user_roles` (
   `user_id` INT(10) UNSIGNED NOT NULL DEFAULT 0,
   `role_id` INT(10) UNSIGNED NOT NULL DEFAULT 0)
 ENGINE = InnoDB
@@ -2283,9 +2283,9 @@ DEFAULT CHARACTER SET = latin1;
 
 
 -- -----------------------------------------------------
--- Table `dbdotproject_g6`.`dotp_user_task_pin`
+-- Table `dotprojectplus_2025`.`dotp_user_task_pin`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `dbdotproject_g6`.`dotp_user_task_pin` (
+CREATE TABLE IF NOT EXISTS `dotprojectplus_2025`.`dotp_user_task_pin` (
   `user_id` INT(11) NOT NULL DEFAULT 0,
   `task_id` INT(10) NOT NULL DEFAULT 0,
   `task_pinned` TINYINT(2) NOT NULL DEFAULT 1,
@@ -2295,9 +2295,9 @@ DEFAULT CHARACTER SET = latin1;
 
 
 -- -----------------------------------------------------
--- Table `dbdotproject_g6`.`dotp_user_tasks`
+-- Table `dotprojectplus_2025`.`dotp_user_tasks`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `dbdotproject_g6`.`dotp_user_tasks` (
+CREATE TABLE IF NOT EXISTS `dotprojectplus_2025`.`dotp_user_tasks` (
   `user_id` INT(11) NOT NULL DEFAULT 0,
   `user_type` TINYINT(4) NOT NULL DEFAULT 0,
   `task_id` INT(11) NOT NULL DEFAULT 0,
@@ -2311,15 +2311,15 @@ DEFAULT CHARACTER SET = latin1;
 
 
 -- -----------------------------------------------------
--- Table `dbdotproject_g6`.`dotp_wbs_dictionary`
+-- Table `dotprojectplus_2025`.`dotp_wbs_dictionary`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `dbdotproject_g6`.`dotp_wbs_dictionary` (
+CREATE TABLE IF NOT EXISTS `dotprojectplus_2025`.`dotp_wbs_dictionary` (
   `wbs_item_id` INT(11) NOT NULL,
   `description` TEXT NULL DEFAULT NULL,
   PRIMARY KEY (`wbs_item_id`),
   CONSTRAINT `FK_WBS_ITEM_DICTIONARY`
     FOREIGN KEY (`wbs_item_id`)
-    REFERENCES `dbdotproject_g6`.`dotp_project_eap_items` (`id`)
+    REFERENCES `dotprojectplus_2025`.`dotp_project_eap_items` (`id`)
     ON DELETE CASCADE)
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = latin1;
