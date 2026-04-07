@@ -59,7 +59,7 @@ Caso precise acessar os recursos internos, utilize as seguintes credenciais:
 
 **Acesso interno à VM Debian (Terminal):**
 * **Usuário:** `root`
-* **Senha:** ``
+* **Senha:** labredes
 
 **Acesso ao Banco de Dados (MariaDB na VM):**
 * **Banco:** `dotprojectplus_2025`
