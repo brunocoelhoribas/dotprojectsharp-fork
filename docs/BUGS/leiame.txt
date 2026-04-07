@@ -1,0 +1,18 @@
+Descrever os BUGs detectados durante os treinamentos e testes.
+
+INTERFACE INICIAL (login)
+    1) Testar o carregamento dos arquivos de (CSS) antes da autenticação. 
+    2) Testar o carregamento dos arquivos de (JS) antes da autenticação.
+    
+
+INTERFACE INICIAL (DASHBOARD)
+    1) Apresentar um resumo no (dashboard) com estatísticas da aplicação, conforme exemplo:
+           - Número de empresas cadastradas = XX
+           - Número de projetos vinculados = XX
+           - Resumo/quantidade de portifólio construído na aplicação = XX
+           ....
+
+
+INTERFACE EMPRESA (Papéis da Organização)
+           - Cadastro de novo papel não retorna da mensagem (gravação com sucesso), fica somente desabilitada. Contudo, realizado o registro dos dados no banco. 
+
