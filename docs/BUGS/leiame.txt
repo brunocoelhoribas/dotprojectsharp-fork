@@ -1,11 +1,11 @@
 Descrever os BUGs detectados durante os treinamentos e testes.
 
-INTERFACE INICIAL (login)
+INTERFACE INICIAL (login) - (07/04/2026)
     1) Testar o carregamento dos arquivos de (CSS) antes da autenticação. 
     2) Testar o carregamento dos arquivos de (JS) antes da autenticação.
     
 
-INTERFACE INICIAL (DASHBOARD)
+INTERFACE INICIAL (DASHBOARD) - (07/04/2026)
     1) Apresentar um resumo no (dashboard) com estatísticas da aplicação, conforme exemplo:
            - Número de empresas cadastradas = XX
            - Número de projetos vinculados = XX
@@ -13,6 +13,6 @@ INTERFACE INICIAL (DASHBOARD)
            ....
 
 
-INTERFACE EMPRESA (Papéis da Organização)
+INTERFACE EMPRESA (Papéis da Organização) - (07/04/2026)
            - Cadastro de novo papel não retorna da mensagem (gravação com sucesso), fica somente desabilitada. Contudo, realizado o registro dos dados no banco. 
 
