@@ -83,7 +83,7 @@ Para facilitar a avaliação e os testes sem necessidade de instalar dependênci
 
 1. **Instale o VirtualBox:** Certifique-se de ter o [VirtualBox](https://www.virtualbox.org/) instalado em sua máquina.
 2. **Baixe e Importe a VM**:
-   * **Link para download da VM:** [Download do arquivo OVA](https://ifcedubr-my.sharepoint.com/:u:/g/personal/bruno_ribas_estudantes_ifc_edu_br/IQBcA36q9bRLSLToaPpbP3TPAUdRSrv9gSuN7aHAeDIvi6I?e=M0Nh8B) *(Baixe o arquivo `.rar`, extraia o conteúdo para obter o arquivo `.ova`)*.
+   * **Link para download da VM:** [Download do arquivo OVA]([https://ifcedubr-my.sharepoint.com/:u:/g/personal/bruno_ribas_estudantes_ifc_edu_br/IQBcA36q9bRLSLToaPpbP3TPAUdRSrv9gSuN7aHAeDIvi6I?e=M0Nh8B](https://ifcedubr-my.sharepoint.com/:u:/g/personal/bruno_ribas_estudantes_ifc_edu_br/IQBA47OHpnkISKQ18JDpGNa9Aco_7Q4rAo43q1MwrFxe8NU?e=d1R4lW)) *(Baixe o arquivo `.rar`, extraia o conteúdo para obter o arquivo `.ova`)*.
    * Abra o VirtualBox.
    * Vá em `Arquivo` > `Importar Appliance...` (ou pressione `Ctrl+I`).
    * Selecione o arquivo `.ova` que você extraiu e conclua a importação.
