@@ -1,4 +1,4 @@
-# DotProject# — Software de Gerenciamento de Projetos Alinhado ao PMBOK.V7
+# DotProject# — Software de Gerenciamento de Projetos Alinhado ao Guia PMBOK® 7a. Edição
 Autoria: Bruno Coelho Ribas <bruno200coelho@gmail.com>
 Orientação: André Fabiano de Moraes <andre.moraes@ifc.edu.br>
 Data da Atualização: 12/08/2026
