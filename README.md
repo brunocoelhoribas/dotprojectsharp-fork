@@ -3,7 +3,7 @@ Autoria: Bruno Coelho Ribas <bruno200coelho@gmail.com>
 Orientação: André Fabiano de Moraes <andre.moraes@ifc.edu.br>
 Data da Atualização: 12/08/2026
 
-<img width="100%" height="auto" alt="Logotipo " src="/images/_dotproject#.jpg" />
+<img width="100%" height="auto" alt="Logotipo " src="/images/dotproject#.jpg" />
 
 
 ## 🛠️ Como Rodar a Aplicação
