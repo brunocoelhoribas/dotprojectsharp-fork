@@ -1,3 +1,11 @@
+# DotProject# — Software para Gerenciamento de Projetos Alinhado ao PMBOK.V7
+Autoria: Bruno Coelho Ribas <bruno200coelho@gmail.com>
+Orientação: André Fabiano de Moraes <andre.moraes@ifc.edu.br>
+Data da Atualização: 12/08/2026
+
+<img width="100%" height="auto" alt="Desenho da Catarina e ao lado o título do projeto: Microaprendizagem supervisionada com metodologias ativas e IA" src="/images/banner.jpg" />
+
+
 ## 🛠️ Como Rodar a Aplicação
 
 Existem duas formas disponíveis para executar a aplicação no seu ambiente local:
